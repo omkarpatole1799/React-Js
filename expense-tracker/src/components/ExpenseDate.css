@@ -1,0 +1,28 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    background-color: beige;
+}
+
+.expense_date_box {
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    margin: 10px 0;
+
+}
+
+.expense_date_year {
+    padding: 2px 0
+}
+
+.expense_date_month {
+    padding: 2px 0
+}
+
+.expense_date_day {
+    padding: 2px 0
+}

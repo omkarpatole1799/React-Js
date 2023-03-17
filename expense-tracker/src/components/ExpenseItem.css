@@ -1,0 +1,27 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.expense_item {
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid red;
+    margin: 1rem 3rem;
+    padding: 0 3rem;
+}
+
+.expense_item__title {
+    display: flex;
+    align-items: center;
+}
+
+.expense_item__amount {
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem;
+    margin: 10px 0;
+}
