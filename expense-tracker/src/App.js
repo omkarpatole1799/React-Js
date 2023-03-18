@@ -1,7 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
-import ExpenseComp from './components/ExpenseComp';
-
+import ExpenseComp from './components/Expenses/ExpenseComp';
+import NewExpense from './components/NewExpense/NewExpense';
 function App() {
 
   const expenses = [
@@ -30,10 +28,18 @@ function App() {
     }
   ]
 
+  const allExpenseDataHandler= (expensesAll)=>{
+    console.log('In app component');
+    console.log(expensesAll);
+  }
+
   return (
-    <div>
+    <>
+      <NewExpense onAllExpenseData = {allExpenseDataHandler}/>
+
       <ExpenseComp data={expenses} />
-    </div>
+
+    </>
   );
 }
 
