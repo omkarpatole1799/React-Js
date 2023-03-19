@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 
+
 import './ExpenseForm.css'
+
 const ExpenseForm = (props) => {
 
     const [description, setDescription] = useState('')
@@ -31,6 +33,8 @@ const ExpenseForm = (props) => {
 
         props.onAddExpense(expenses)
     }
+
+
     return (
         <div className="expense_form__container">
             <form className='expense_form' onSubmit={formSubmitHandler} >
@@ -51,6 +55,7 @@ const ExpenseForm = (props) => {
 
                 <div className='expense_form__item'>
                     <button className="expense_form__input btn_submit" type='submit'>Submit</button>
+                    <button className="expense_form__input btn_cancel" onClick={props.onCancel} type='button'>Cancel</button>
                 </div>
             </form>
         </div>

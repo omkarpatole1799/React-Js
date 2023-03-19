@@ -1,0 +1,22 @@
+.new_expenses__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: antiquewhite;
+    margin: 0 15rem;
+    padding: 2rem;
+
+}
+
+.add_expense_btn{
+    background-color: rgb(48, 35, 59);
+    color: #FFF;
+    padding: 10px 15px;
+    font-weight: bold;
+    border-radius: 10px
+}
+
+.add_expense_btn:hover{
+    color: rgb(255, 255, 255);
+    background-color: #897b7b;
+}

@@ -35,6 +35,8 @@ function App() {
 
   return (
     <>
+
+
       <NewExpense onAllExpenseData={allExpenseDataHandler} />
 
       <ExpenseComp data={expenses} />

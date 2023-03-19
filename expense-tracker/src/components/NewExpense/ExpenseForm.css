@@ -1,4 +1,4 @@
-.expense_form__container{
+/* .expense_form__container{
     background-color: #FFE2C8;
     margin: 0 15rem;
     padding: 1rem;
@@ -30,4 +30,19 @@
 .btn_submit:hover{
     color: rgb(61, 46, 46);
     background-color: aqua;
+} */
+
+.expense_form__container{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+
+}
+
+.expense_form{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    
 }
