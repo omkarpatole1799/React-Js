@@ -1,11 +1,19 @@
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
+.expense_filter__container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 3rem;
+    margin-top: 1rem;
 }
-.expense_filter{
-    
+
+.expense_filter__option {
+    padding: 10px;
+    border-radius: 10px;
 }
-.expense_filter__option{
-    
+
+.expense_filter__label {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-right: 1rem;
+
 }

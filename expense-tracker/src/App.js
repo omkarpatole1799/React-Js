@@ -1,41 +1,41 @@
+import React, { useState } from 'react';
 import ExpenseComp from './components/Expenses/ExpenseComp';
 import NewExpense from './components/NewExpense/NewExpense';
+
+const DUMMY_DATA = [
+  {
+    id: 'e1',
+    title: 'a',
+    date: new Date(2023, 4, 23),
+    amount: 44
+  },{
+    id: 'e2',
+    title: 'a',
+    date: new Date(2021, 2, 23),
+    amount: 44
+  },
+  {
+    id: 'e3',
+    title: 'aa',
+    date: new Date(2021, 2, 23),
+    amount: 44
+  }
+]
+
 function App() {
 
-  const expenses = [
-    {
-      id: 'e1',
-      title: 'Food',
-      date: new Date(23, 2, 23),
-      amount: 44
-    },
-    {
-      id: 'e2',
-      title: 'Grocery',
-      date: new Date(23, 2, 23),
-      amount: 33
-    },
-    {
-      id: 'e3',
-      title: 'Bike',
-      date: new Date(23, 2, 23),
-      amount: 54
-    }, {
-      id: 'e4',
-      title: 'Cash',
-      date: new Date(23, 2, 23),
-      amount: 11
-    }
-  ]
+  const [expenses, setExpenses] = useState(DUMMY_DATA)
 
-  const allExpenseDataHandler= (expensesAll)=>{
-    console.log('In app component');
-    console.log(expensesAll);
+
+  const allExpenseDataHandler = (expensesAll) => {
+    setExpenses((prevExpense) => {
+      return [expensesAll, ...prevExpense]
+    })
   }
 
   return (
     <>
-      <NewExpense onAllExpenseData = {allExpenseDataHandler}/>
+      <NewExpense onAllExpenseData={allExpenseDataHandler} />
 
       <ExpenseComp data={expenses} />
 

@@ -1,0 +1,9 @@
+.expense_component__container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 15rem;
+    margin-top: 3rem;
+    padding: 2rem;
+    background-color: rgb(23, 80, 109);
+    border-radius: 10px;
+}

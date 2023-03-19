@@ -1,42 +1,33 @@
-* {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
+.expense_form__container{
+    background-color: #FFE2C8;
+    margin: 0 15rem;
+    padding: 1rem;
 }
 
-.expense_form {
+.expense_form{
     display: flex;
     justify-content: center;
-    border: 2px solid black;
-    margin: 3rem;
-    padding: 1rem 3rem;
+    
+}
+.expense_form__item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+
 }
 
-.expense_form__title {
-    padding: 0 1rem;
+.expense_form__label{
+    padding: 0 2px;
+    font-size: 1.5rem;
 }
 
-.expense_form__input {
-    padding: 0.5rem;
+.expense_form__input{
+    padding: 10px;
+    
 }
 
-.expense_form__label {
-    padding: 0 1rem;
-}
-
-.expense_form__amount {
-    padding: 0 1rem;
-}
-
-.expense_form__date {
-    padding: 0 1rem;
-}
-
-.expense_form__button {
-    padding: 0 1rem;
-}
-
-.btn_submit:hover {
-    color: white;
-    background-color: black;
+.btn_submit:hover{
+    color: rgb(61, 46, 46);
+    background-color: aqua;
 }

@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ExpenseForm from './ExpenseForm'
 const NewExpense = (props) => {
 
-    const [id, setId] = useState(0)
     const expenseHandler = expenses => {
         const expense = {
             ...expenses,

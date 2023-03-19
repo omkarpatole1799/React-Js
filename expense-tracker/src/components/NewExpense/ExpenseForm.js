@@ -1,58 +1,55 @@
 import React, { useState } from 'react'
-import ExpenseComp from '../Expenses/ExpenseComp'
+
 import './ExpenseForm.css'
 const ExpenseForm = (props) => {
 
-    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('')
     const [amount, setAmount] = useState('')
     const [date, setDate] = useState('')
 
     const titleInputHandler = (e) => {
-        setTitle(e.target.value)
-        console.log(e.target.value);
+        setDescription(e.target.value)
     }
     const amountInputHandler = (e) => {
-        setAmount(e.target.value)
+        setAmount(Number(e.target.value))
     }
     const dateInputHandler = (e) => {
         setDate(e.target.value)
     }
-    const formSubmitHandler = (e)=>{
+    const formSubmitHandler = (e) => {
         e.preventDefault()
 
         const expenses = {
-            title: title,
+            title: description,
             amount: amount,
             date: new Date(date)
         }
 
         setDate('')
         setAmount('')
-        setTitle('')
+        setDescription('')
 
         props.onAddExpense(expenses)
-
     }
-
     return (
-        <div>
-            <form className="expense_form" onSubmit={formSubmitHandler} >
-                <div className="expense_form__title">
+        <div className="expense_form__container">
+            <form className='expense_form' onSubmit={formSubmitHandler} >
+                <div className="expense_form__item">
                     <label className="expense_form__label">Title</label>
-                    <input onChange={titleInputHandler} className="expense_form__input" type='text' value={title} />
+                    <input onChange={titleInputHandler} className="expense_form__input" type='text' value={description} />
                 </div>
 
-                <div className="expense_form__amount">
+                <div className="expense_form__item">
                     <label className="expense_form__label">Amount</label>
                     <input onChange={amountInputHandler} className="expense_form__input" type='number' value={amount} min='0.01' step='0.01' />
                 </div>
 
-                <div className="expense_form__date">
+                <div className="expense_form__item">
                     <label className="expense_form__label">Date</label>
                     <input onChange={dateInputHandler} className="expense_form__input" type='date' value={date} min='2020-01-01' max='2023-12-12' />
                 </div>
 
-                <div className='expense_form__button'>
+                <div className='expense_form__item'>
                     <button className="expense_form__input btn_submit" type='submit'>Submit</button>
                 </div>
             </form>
