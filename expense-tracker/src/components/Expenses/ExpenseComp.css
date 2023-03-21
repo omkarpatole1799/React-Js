@@ -1,4 +1,4 @@
-.expense_component__container {
+.expense_component {
     display: flex;
     flex-direction: column;
     margin: 0 15rem;

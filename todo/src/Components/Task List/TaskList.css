@@ -1,0 +1,16 @@
+.task_container {
+    margin: 0 10rem;
+    padding: 0.7rem;
+    list-style: none;
+}
+@media screen and (max-width: 768px) {
+    .task_container {
+        margin: 1rem 5rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .task_container {
+        margin: 0rem;
+    }
+}

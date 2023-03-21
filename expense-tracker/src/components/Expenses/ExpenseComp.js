@@ -4,6 +4,7 @@ import ExpenseFilter from "./ExpenseFilter";
 import ExpensesList from "./ExpensesList";
 import "./ExpenseComp.css";
 import Chart from "../Chart/Chart";
+import Rules from "./Rules";
 function ExpenseComp(props) {
     const [selectedYear, setSelectedYear] = useState("2021");
 
@@ -20,7 +21,8 @@ function ExpenseComp(props) {
     });
 
     return (
-        <div className="expense_component__container">
+        <div className="expense_component">
+            <Rules />
             <ExpenseFilter
                 selectedYear={selectedYear}
                 onSelectedYear={filterSelectedYearHandler}
