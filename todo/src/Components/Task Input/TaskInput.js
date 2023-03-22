@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './TaskInput.css';
+import styles from './TaskInput.module.css';
+
 function TaskInput(props) {
     const [todo, setTodo] = useState('');
     const [isValidInput, setIsValidInput] = useState(false);
@@ -27,7 +28,8 @@ function TaskInput(props) {
 
     return (
         <form
-            className={`form-control ${isValidInput ? 'invalid' : ''}`}
+            // className={`form-control ${isValidInput ? 'invalid' : ''}`}
+            className={`${styles['form-control']} ${isValidInput && styles.invalid}`}
             onSubmit={formSubmitHandler}
         >
             <label>Todo</label>
@@ -35,9 +37,14 @@ function TaskInput(props) {
                 value={todo}
                 type="text"
                 onChange={inputHandler}
-            /> 
-            {isValidInput ? <span className='invalid'>Please enter value</span> : ''} <br></br>
-            <button className="button"> Add Todo ! </button>
+            />
+            {isValidInput ? (
+                <span className={`${styles.invalid}`}>Please enter value</span>
+            ) : (
+                ''
+            )}{' '}
+            <br></br>
+            <button className={`${styles.button}`}> Add Todo ! </button>
         </form>
     );
 }

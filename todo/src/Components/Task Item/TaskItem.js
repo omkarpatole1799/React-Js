@@ -1,12 +1,13 @@
 import React from 'react';
-import './TaskItem.css';
+import styles  from  './TaskItem.module.css';
+
 function TaskItem(props) {
     const deleteTaskHandler = () => {
         props.deleteTaskHandler(props.id);
     };
     return (
         <li
-            className="task_item__container"
+            className={`${styles.task_item__container}`}
             onClick={deleteTaskHandler}
         >
             <h3>{props.title}</h3>
