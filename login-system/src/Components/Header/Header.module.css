@@ -1,0 +1,11 @@
+.main_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    background-color: rgb(104, 104, 206);
+    padding: 2rem;
+}
+.main_header h2 {
+    color: #fff;
+}

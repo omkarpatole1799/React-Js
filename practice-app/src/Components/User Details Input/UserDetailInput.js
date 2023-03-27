@@ -1,36 +1,36 @@
-import React, { useState } from 'react';
-import Button from '../UI/Button';
-import Card from '../UI/Card';
-import Modal from '../UI/Modal';
+import React, { useState } from 'react'
+import Button from '../UI/Button'
+import Card from '../UI/Card'
+import Modal from '../UI/Modal'
 
-import styles from './UserDetailInput.module.css';
+import styles from './UserDetailInput.module.css'
 function UserDetailInput(props) {
-    const [userName, setUserName] = useState('');
-    const [userAge, setUserAge] = useState('');
-    const [error, setError] = useState();
+    const [userName, setUserName] = useState('')
+    const [userAge, setUserAge] = useState('')
+    const [error, setError] = useState()
 
     const userNameInputHandler = (e) => {
-        setUserName(e.target.value);
-    };
+        setUserName(e.target.value)
+    }
     const userAgeInputHandler = (e) => {
-        setUserAge(e.target.value);
-    };
+        setUserAge(e.target.value)
+    }
     const formSubmitHandler = (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
         if (userName.trim().length === 0 || userAge.trim().length === 0) {
             setError({
                 title: 'Invalid Input',
                 message: 'Name and age should not be empty',
-            });
-            return;
+            })
+            return
         }
         if (+userAge.trim() < 0) {
             setError({
                 title: 'Invalid age',
                 message: 'Age should be greater than 0',
-            });
-            return;
+            })
+            return
         }
         props.onSubmit([
             {
@@ -38,15 +38,16 @@ function UserDetailInput(props) {
                 age: userAge,
                 id: Math.random().toString(),
             },
-        ]);
+        ])
 
-        setUserName('');
-        setUserAge('');
-    };
+        setUserName('')
+        setUserAge('')
+        console.log("hi")
+    }
 
     const closeModalHandler = () => {
-        setError(null);
-    };
+        setError(null)
+    }
 
     return (
         <>
@@ -60,8 +61,7 @@ function UserDetailInput(props) {
                 )}
                 <form
                     className={styles.form__container}
-                    onSubmit={formSubmitHandler}
-                >
+                    onSubmit={formSubmitHandler}>
                     <div className={`${styles.input__container}`}>
                         <label>User Name</label>
                         <input
@@ -82,7 +82,7 @@ function UserDetailInput(props) {
                 </form>
             </Card>
         </>
-    );
+    )
 }
 
-export default UserDetailInput;
+export default UserDetailInput
