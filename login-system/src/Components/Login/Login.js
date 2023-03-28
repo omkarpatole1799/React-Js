@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from '../UI/Button/Button'
 import Card from '../UI/Card/Card'
 import './Login.css'
@@ -11,15 +11,26 @@ function Login(props) {
 
     const [isValidForm, setIsValidForm] = useState(false)
 
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            console.log('Use effect run')
+            setIsValidForm(
+                emailInput.includes('@') && passInput.trim().length > 6,
+            )
+        }, 1000)
+
+        // clean up function
+        return () => {
+            console.log('Cleanup')
+            clearTimeout(timeout)
+        }
+    }, [emailInput, passInput])
+
     const emailInputHandler = (event) => {
         setEmailInput(event.target.value)
-
-        setIsValidForm(emailInput.includes('@') && passInput.trim().length > 6)
     }
     const passInputHandler = (event) => {
         setPassInput(event.target.value)
-
-        setIsValidForm(passInput.trim().length > 6 && emailInput.includes('@'))
     }
 
     const validEmailHandler = () => {
@@ -40,7 +51,7 @@ function Login(props) {
                 <form className="form" onSubmit={formSubmitHandler}>
                     <div
                         className={`${'input_container'} ${
-                            !isValidEmail ? 'invalid' : ''
+                            isValidEmail === false ? 'invalid' : ''
                         }`}>
                         <label>Email</label>
                         <input
@@ -51,7 +62,7 @@ function Login(props) {
                     </div>
                     <div
                         className={`${'input_container'} ${
-                            !isValidPass ? 'invalid' : ''
+                            isValidPass === false ? 'invalid' : ''
                         }`}>
                         <label>Password</label>
                         <input
@@ -61,7 +72,12 @@ function Login(props) {
                         />
                     </div>
 
-                    <Button type="submit" disabled={!isValidForm}>Login</Button>
+                    <Button
+                        className="login_button"
+                        type="submit"
+                        disabled={!isValidForm}>
+                        Login
+                    </Button>
                 </form>
             </Card>
         </>

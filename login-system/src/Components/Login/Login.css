@@ -30,9 +30,6 @@
 .input_container.invalid input {
     color: red;
 }
-
-.input_container span {
-    display: flex;
-    color: red;
-    flex-direction: row;
+.login_button {
+    padding: 1rem;
 }
