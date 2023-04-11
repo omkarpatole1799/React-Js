@@ -10,14 +10,13 @@ import Modal from './Components/UI/Modal/Modal'
 function App() {
     const [modal, setModal] = useState(false)
     const [isLoggedIn, setIsLoggedIn] = useState()
-
+    console.log(isLoggedIn)
     useEffect(() => {
         const checkIfAlreadyLoggedIn = localStorage.getItem('isLoggedIn')
         if (checkIfAlreadyLoggedIn === '1') {
             setIsLoggedIn(true)
         }
-    })
-
+    },[])
     const formSubmitHandler = (inputValue) => {
         localStorage.setItem('isLoggedIn', '1')
         setIsLoggedIn(true)

@@ -1,87 +1,86 @@
-import React, { useState, useEffect } from 'react'
-import Button from '../UI/Button/Button'
-import Card from '../UI/Card/Card'
-import './Login.css'
+import React, { useState, useEffect } from "react";
+import Button from "../UI/Button/Button";
+import Card from "../UI/Card/Card";
+import "./Login.css";
 function Login(props) {
-    const [emailInput, setEmailInput] = useState('')
-    const [passInput, setPassInput] = useState('')
+  const [emailInput, setEmailInput] = useState("");
+  const [passInput, setPassInput] = useState("");
 
-    const [isValidEmail, setIsValidEmail] = useState()
-    const [isValidPass, setIsValidPass] = useState()
+  const [isValidEmail, setIsValidEmail] = useState();
+  const [isValidPass, setIsValidPass] = useState();
 
-    const [isValidForm, setIsValidForm] = useState(false)
+  const [isValidForm, setIsValidForm] = useState(false);
 
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            console.log('Use effect run')
-            setIsValidForm(
-                emailInput.includes('@') && passInput.trim().length > 6,
-            )
-        }, 1000)
-
-        // clean up function
-        return () => {
-            console.log('Cleanup')
-            clearTimeout(timeout)
-        }
-    }, [emailInput, passInput])
-
-    const emailInputHandler = (event) => {
-        setEmailInput(event.target.value)
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+        console.log('inside check validity')
+      setIsValidForm(emailInput.includes("@") && passInput.trim().length > 6);
+    }, 1000);
+    return ()=>{
+        console.log("inside cleanup function")
+        clearTimeout(timeout)
     }
-    const passInputHandler = (event) => {
-        setPassInput(event.target.value)
-    }
+  }, [emailInput,passInput]);
 
-    const validEmailHandler = () => {
-        setIsValidEmail(emailInput.includes('@'))
-    }
+  const emailInputHandler = (event) => {
+    setEmailInput(event.target.value);
+  };
+  const passInputHandler = (event) => {
+    setPassInput(event.target.value);
+  };
 
-    const validPasswordHandler = () => {
-        setIsValidPass(passInput.trim().length > 6)
-    }
+  const validEmailHandler = () => {
+    setIsValidEmail(emailInput.includes("@"));
+  };
 
-    const formSubmitHandler = (event) => {
-        event.preventDefault()
-        props.onSubmitForm([emailInput, passInput])
-    }
-    return (
-        <>
-            <Card className="form__container">
-                <form className="form" onSubmit={formSubmitHandler}>
-                    <div
-                        className={`${'input_container'} ${
-                            isValidEmail === false ? 'invalid' : ''
-                        }`}>
-                        <label>Email</label>
-                        <input
-                            type="email"
-                            onChange={emailInputHandler}
-                            onBlur={validEmailHandler}
-                        />
-                    </div>
-                    <div
-                        className={`${'input_container'} ${
-                            isValidPass === false ? 'invalid' : ''
-                        }`}>
-                        <label>Password</label>
-                        <input
-                            type="text"
-                            onChange={passInputHandler}
-                            onBlur={validPasswordHandler}
-                        />
-                    </div>
+  const validPasswordHandler = () => {
+    setIsValidPass(passInput.trim().length > 6);
+  };
 
-                    <Button
-                        className="login_button"
-                        type="submit"
-                        disabled={!isValidForm}>
-                        Login
-                    </Button>
-                </form>
-            </Card>
-        </>
-    )
+  const formSubmitHandler = (event) => {
+    event.preventDefault();
+    props.onSubmitForm([emailInput, passInput]);
+  };
+  return (
+    <>
+      <Card className="form__container">
+        <form className="form" onSubmit={formSubmitHandler}>
+          <div
+            className={`${"input_container"} ${
+              isValidEmail === false ? "invalid" : ""
+            }`}
+          >
+            <label>Email</label>
+            <input
+              type="email"
+              onChange={emailInputHandler}
+              onBlur={validEmailHandler}
+            />
+          </div>
+          <div
+            className={`${"input_container"} ${
+              isValidPass === false ? "invalid" : ""
+            }`}
+          >
+            <label>Password</label>
+            <input
+              type="text"
+              onChange={passInputHandler}
+              onBlur={validPasswordHandler}
+            />
+          </div>
+
+          <Button
+            className="login_button"
+            type="submit"
+            disabled={!isValidForm}
+          >
+            Login
+          </Button>
+        </form>
+      </Card>
+    </>
+  );
 }
 
-export default Login
+export default Login;
