@@ -57,14 +57,30 @@ function Login(props) {
     dispatchPassword({ type: "PASSWORD_BLUR" });
   };
 
+  const { isValid: emailIsValid } = emailState;
+  const { isValid: passwordIsValid } = passwordState;
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      console.log("INSIDE USE EFFECT");
+      setIsValidForm(emailIsValid && passwordIsValid);
+    }, 1000);
+    return () => {
+      console.log("inside cleanup function");
+      clearTimeout(timeout);
+    };
+  }, [emailIsValid, passwordIsValid]);
+
   // useEffect(() => {
   //   const timeout = setTimeout(() => {
+  //     console.log("INSIDE USE EFFECT");
   //     setIsValidForm(emailState.isValid && passwordState.isValid);
   //   }, 1000);
   //   return () => {
+  //     console.log("inside cleanup function");
   //     clearTimeout(timeout);
   //   };
-  // }, [emailState.value, passwordState.value]);
+  // }, [emailState.isValid, passwordState.isValid]);
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
