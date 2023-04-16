@@ -1,38 +1,26 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
-
-import Header from "./Components/Header/Header";
-import Home from "./Components/Home/Home";
-import Login from "./Components/Login/Login";
-import Button from "./Components/UI/Button/Button";
-import Modal from "./Components/UI/Modal/Modal";
+import React, { useState, useContext } from "react"
+import "./App.css"
+import Header from "./Components/Header/Header"
+import Home from "./Components/Home/Home"
+import Login from "./Components/Login/Login"
+import Button from "./Components/UI/Button/Button"
+import Modal from "./Components/UI/Modal/Modal"
+import AuthContext from "./store/auth-contex"
 
 function App() {
-  const [modal, setModal] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  useEffect(() => {
-    const checkIfAlreadyLoggedIn = localStorage.getItem("isLoggedIn");
-    if (checkIfAlreadyLoggedIn === "1") {
-      setIsLoggedIn(true);
-    }
-  }, []);
-  const formSubmitHandler = (inputValue) => {
-    localStorage.setItem("isLoggedIn", "1");
-    setIsLoggedIn(true);
-  };
-  const logoutButtonHandler = () => {
-    localStorage.setItem("isLoggedIn", "0");
-    setIsLoggedIn(false);
-  };
+  const [modal, setModal] = useState(false)
+  const ctx = useContext(AuthContext)
+
   const modalHandler = () => {
     setModal({
       heading: "Error",
       description: "there was an error",
-    });
-  };
+    })
+  }
   const closeModalHandler = () => {
-    setModal(null);
-  };
+    setModal(null)
+  }
+
   return (
     <>
       {modal && (
@@ -42,12 +30,12 @@ function App() {
           onClick={closeModalHandler}
         />
       )}
-      <Header isLoggedIn={isLoggedIn} onLogout={logoutButtonHandler} />
-      {isLoggedIn && <Home />}
-      {!isLoggedIn && <Login onSubmitForm={formSubmitHandler} />}
+      <Header />
+      {!ctx.isLoggedIn && <Login />}
+      {ctx.isLoggedIn && <Home />}
       <Button onClick={modalHandler}>Modal</Button>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
