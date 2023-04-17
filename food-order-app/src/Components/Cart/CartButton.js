@@ -8,10 +8,10 @@ function CartButton() {
   return (
     <Button className="btn cart-button">
       <span className="cart-logo">
-        <img src={shoppingCart} alt="" />
+        <img src={shoppingCart} />
       </span>
       <span className="cart-heading">Cart</span>
-      <span className="cart-total">3</span>
+      <span className="cart-total">5</span>
     </Button>
   )
 }
