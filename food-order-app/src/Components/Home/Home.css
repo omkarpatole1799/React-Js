@@ -1,0 +1,21 @@
+.home-image img {
+  width: 100vh;
+  padding: 1rem;
+  border-radius: 2rem;
+  margin: 1rem 0 1rem 3rem;
+}
+
+.home {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: inherit;
+  background-color: aquamarine;
+}
+
+.home-card {
+  border-radius: 2rem;
+  padding: 2rem;
+  margin: 0 3rem;
+}

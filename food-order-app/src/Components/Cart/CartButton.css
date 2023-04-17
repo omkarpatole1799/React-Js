@@ -1,0 +1,28 @@
+span img {
+  width: 20px;
+  height: 20px;
+}
+
+.cart-heading {
+  padding: 0 1rem;
+}
+.cart-total {
+  background-color: rgb(124, 114, 114);
+  border-radius: 10px;
+  padding: 0 8px;
+  color: white;
+}
+
+.cart-button {
+  display: flex;
+  flex-direction: row;
+  width: 10rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3rem;
+  background-color: wheat;
+}
+
+.cart-button:hover {
+  background-color: rgb(181, 163, 130);
+}
