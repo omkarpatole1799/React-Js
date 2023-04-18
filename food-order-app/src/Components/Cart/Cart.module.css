@@ -1,0 +1,48 @@
+.mealItem {
+  background-color: rgb(87, 87, 89);
+  color: rgb(217, 214, 214);
+  list-style: none;
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+.cart {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.cartSummary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.cartTotal {
+  display: flex;
+  flex-direction: column;
+}
+
+.cartButton {
+  display: flex;
+  margin: 0 0 0 0.5rem;
+
+}
+
+.cartCloseButton {
+  border-radius: 5px;
+  padding: 5px;
+  margin: 0.5rem;
+}
+.cartOrderButton {
+  border-radius: 5px;
+  padding: 5px;
+  margin: 0.5rem;
+}
+
+.mealItemQuantityTotal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

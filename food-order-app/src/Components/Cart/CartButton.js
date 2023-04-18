@@ -4,9 +4,12 @@ import shoppingCart from "../../assets/images/shopping-cart.png"
 
 import "./CartButton.css"
 
-function CartButton() {
+function CartButton(props) {
+  const cartButtonHandler = ()=>{
+    console.log(props)
+  }
   return (
-    <Button className="btn cart-button">
+    <Button onClick={cartButtonHandler} className="btn cart-button">
       <span className="cart-logo">
         <img src={shoppingCart} />
       </span>

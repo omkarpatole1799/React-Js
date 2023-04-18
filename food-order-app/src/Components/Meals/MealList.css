@@ -1,0 +1,38 @@
+.meal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 2rem;
+  color: black;
+  margin: 1rem;
+  list-style: none;
+  border-radius: 14px;
+}
+.meal-list-button {
+  padding: 10px;
+  border-radius: 14px;
+}
+p {
+  margin-bottom: 0px;
+}
+
+.meal-info {
+}
+
+.meal-input {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.meal-input input {
+  padding: 5px;
+}
+
+.meal-input label {
+  padding-right: 1rem;
+}
+.meal-input button {
+  padding: 5px;
+  margin-left: 1rem;
+}

@@ -1,7 +1,7 @@
 import React from "react"
 import CartButton from "../Cart/CartButton"
 import "./Navbar.css"
-function Navbar() {
+function Navbar(props) {
   return (
     <>
       <div className="navbar bg-primary">
@@ -9,7 +9,7 @@ function Navbar() {
           <span className="navbar-brand mb-0 h1 text-white">meals.io</span>
         </div>
         <div className="me-5">
-          <CartButton></CartButton>
+          <CartButton selectedMeal={props.onSelectedMeal}></CartButton>
         </div>
       </div>
     </>
