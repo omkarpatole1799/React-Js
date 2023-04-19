@@ -6,11 +6,18 @@ import Meals from "./Components/Meals/Meals"
 import Cart from "./Components/Cart/Cart"
 
 function App() {
+  const [modal, setModal] = useState(false)
+  const cartOpenHandler = () => {
+    setModal(true)
+  }
+  const cartCloseHandler = () => {
+    setModal(false)
+  }
   return (
     <>
-      <Cart />
+      {modal && <Cart onClick={cartCloseHandler} />}
 
-      <Navbar />
+      <Navbar onCartButtonHandler={cartOpenHandler} />
 
       <Home />
 
