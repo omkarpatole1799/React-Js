@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 import CartButton from "../Cart/CartButton"
 import "./Navbar.css"
+
 function Navbar(props) {
   return (
     <>
@@ -9,7 +10,7 @@ function Navbar(props) {
           <span className="navbar-brand mb-0 h1 text-white">meals.io</span>
         </div>
         <div className="me-5">
-          <CartButton selectedMeal={props.onSelectedMeal}></CartButton>
+          <CartButton onClick={props.onCartButtonHandler} />
         </div>
       </div>
     </>
