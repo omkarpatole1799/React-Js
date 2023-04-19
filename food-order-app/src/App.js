@@ -4,6 +4,7 @@ import Navbar from "./Components/Header/Navbar"
 import Home from "./Components/Home/Home"
 import Meals from "./Components/Meals/Meals"
 import Cart from "./Components/Cart/Cart"
+import CartProvider from "./store/CartProvider"
 
 function App() {
   const [modal, setModal] = useState(false)
@@ -14,7 +15,7 @@ function App() {
     setModal(false)
   }
   return (
-    <>
+    <CartProvider>
       {modal && <Cart onClick={cartCloseHandler} />}
 
       <Navbar onCartButtonHandler={cartOpenHandler} />
@@ -22,7 +23,7 @@ function App() {
       <Home />
 
       <Meals />
-    </>
+    </CartProvider>
   )
 }
 
