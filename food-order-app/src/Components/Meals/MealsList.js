@@ -1,7 +1,6 @@
-import React, { useState } from "react"
+import React from "react"
 import Input from "../UI/Input"
 import "./MealList.css"
-import Button from "../UI/Button/Button"
 function MealsList(props) {
   return (
     <>
@@ -16,15 +15,11 @@ function MealsList(props) {
             <Input
               label={"Quantity"}
               input={{
-                id: {},
+                id: meal.id,
                 type: "number",
-                min: "0",
-                max: "5",
-                step: "1",
-                defaultValue: "0",
               }}
+              meal={meal}
             ></Input>
-            <Button>Add</Button>
           </div>
         </li>
       ))}
