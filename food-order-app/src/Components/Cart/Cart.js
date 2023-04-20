@@ -6,8 +6,12 @@ import CartItem from "./CartItem"
 import CartContext from "../../store/cart-context";
 
 function Cart(props) {
-    const [isCartEmpty, setIsCartEmpty] = useState(false)
     const cartCtx = useContext(CartContext)
+
+    // add item handler
+    const addItemHandler = (item) => {
+        cartCtx.addItem({...item, quantity: 1})
+    }
 
     const totalAmount = cartCtx.items.map((item) => {
         return item.quantity * item.price
@@ -24,11 +28,13 @@ function Cart(props) {
         </>
     }
 
+
     return (<Modal onClick={props.onClick}>
         <ul className={classes.cart}>
             <div className={classes.cartItem}>
                 {cartCtx.items.map((item) => {
-                    return <CartItem key={item.id} onClick={props.onClick} meal={item}/>
+                    return <CartItem key={item.id} onClick={props.onClick} meal={item}
+                                     onAddItem={addItemHandler.bind(null, item)}/>
                 })}
             </div>
         </ul>
