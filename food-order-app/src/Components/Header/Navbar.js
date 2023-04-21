@@ -1,20 +1,25 @@
-import React, { useState } from "react"
+import React, {useState} from "react"
 import CartButton from "../Cart/CartButton"
-import "./Navbar.css"
+import classes from "./Navbar.module.css"
 
 function Navbar(props) {
-  return (
-    <>
-      <div className="navbar bg-primary">
-        <div className="ms-5">
-          <span className="navbar-brand mb-0 h1 text-white">meals.io</span>
-        </div>
-        <div className="me-5">
-          <CartButton onClick={props.onCartButtonHandler} />
-        </div>
-      </div>
-    </>
-  )
+    return (
+        <nav className={classes.navbar}>
+            <div className={classes.navbarHeading}>
+                <span>meals.io</span>
+            </div>
+            <ul className={classes.navbarItems}>
+                <li>
+                    <span>Home</span>
+                </li>
+                <li>
+                    <span>Order</span>
+                </li>
+                <li className={classes.navbarCartButton}>
+                    <CartButton onClick={props.onCartButtonHandler}/>
+                </li>
+            </ul>
+        </nav>)
 }
 
 export default Navbar
