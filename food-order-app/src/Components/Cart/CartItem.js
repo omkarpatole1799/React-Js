@@ -19,7 +19,7 @@ function CartItem(props) {
                     <Button onClick={props.onAddItem}
                             className={classes.quantityButton}>+</Button>
                     <span> x {props.meal.quantity} </span>
-                    <Button className={classes.quantityButton}>-</Button>
+                    <Button onClick={props.onRemoveItem} className={classes.quantityButton}>-</Button>
                 </div>
             </div>
             <div className={classes.mealTotal}>
