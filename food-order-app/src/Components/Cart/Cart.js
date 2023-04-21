@@ -12,12 +12,10 @@ function Cart(props) {
     const addItemHandler = (item) => {
         cartCtx.addItem({...item, quantity: 1})
     }
-
-    const totalAmount = cartCtx.items.map((item) => {
-        return item.quantity * item.price
-    }).reduce((cur, el) => {
-        return cur + el
-    }, 0)
+    const removeItemHandler = (id)=>{
+        cartCtx.removeItem(id)
+    }
+    const totalAmount = cartCtx.totalAmount
 
     const emptyCart = () => {
         return <span>Empty Cart! Shop too see in cart </span>
@@ -34,7 +32,8 @@ function Cart(props) {
             <div className={classes.cartItem}>
                 {cartCtx.items.map((item) => {
                     return <CartItem key={item.id} onClick={props.onClick} meal={item}
-                                     onAddItem={addItemHandler.bind(null, item)}/>
+                                     onAddItem={addItemHandler.bind(null, item)}
+                                     onRemoveItem={removeItemHandler.bind(null,item.id)}/>
                 })}
             </div>
         </ul>
