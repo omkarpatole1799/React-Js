@@ -1,7 +1,7 @@
 import React from "react"
 import Card from "../UI/Card/Card"
 import MealsList from "./MealsList"
-
+import classes from './Meals.module.css'
 const DUMMY_MEALS = [
   {
     id: "m1",
@@ -32,6 +32,9 @@ const DUMMY_MEALS = [
 function Meals(props) {
   return (
     <Card>
+      <div>
+        <h3 className={classes.mealsListHeading}>Order Now!</h3>
+      </div>
       <ul>
         <MealsList meals={DUMMY_MEALS} />
       </ul>
