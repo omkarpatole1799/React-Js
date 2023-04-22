@@ -33,15 +33,7 @@ function Cart(props) {
       <ul className={classes.cart}>
         <div className={classes.cartItem}>
           {cartCtx.items.map((item) => {
-            return (
-              <CartItem
-                key={item.id}
-                onClick={props.onClick}
-                meal={item}            
-                onAddItem={addItemHandler.bind(null, item)}
-                onRemoveItem={removeItemHandler.bind(null, item.id)}
-              />
-            )
+            return <CartItem key={item.id} meal={item} />
           })}
         </div>
       </ul>

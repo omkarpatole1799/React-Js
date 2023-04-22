@@ -16,6 +16,7 @@ const DUMMY_MEALS = [
   //   description: "Special fry",
   //   price: 20,
   //   image: tomato,
+  // quantity: 0,
   // },
   {
     id: "m2",
@@ -23,6 +24,7 @@ const DUMMY_MEALS = [
     description: "Indian special",
     price: 620,
     image: vegmix,
+    quantity: 0,
   },
   {
     id: "m3",
@@ -30,6 +32,7 @@ const DUMMY_MEALS = [
     description: "Chipped potato",
     price: 100,
     image: potato,
+    quantity: 0,
   },
   {
     id: "m4",
@@ -37,6 +40,7 @@ const DUMMY_MEALS = [
     description: "All veggies mix",
     price: 35,
     image: chilli,
+    quantity: 0,
   },
   {
     id: "m5",
@@ -44,6 +48,7 @@ const DUMMY_MEALS = [
     description: "Fried",
     price: 60,
     image: vegmix,
+    quantity: 0,
   },
   {
     id: "m6",
@@ -51,6 +56,7 @@ const DUMMY_MEALS = [
     description: "Mix veg",
     price: 80,
     image: brokoli,
+    quantity: 0,
   },
 ]
 

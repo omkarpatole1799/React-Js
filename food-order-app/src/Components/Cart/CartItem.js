@@ -9,16 +9,12 @@ function CartItem(props) {
         <div className={classes.mealInfo}>
           <span>{props.meal.mealName}</span>
           <span>{props.meal.description}</span>
-          <span>$ {(props.meal.price).toFixed(2)}</span>
+          <span>$ {props.meal.price.toFixed(2)}</span>
         </div>
         <div className={classes.mealItemQuantityTotal}>
           <span>Quantity</span>
           <div>
-            <CartItemAddRemoveBtn
-              quantity={props.meal.quantity}
-              onAddItem={props.onAddItem}
-              onRemoveItem={props.onRemoveItem}
-            />
+            <CartItemAddRemoveBtn item={props.meal} />
           </div>
         </div>
         <div className={classes.mealTotal}>

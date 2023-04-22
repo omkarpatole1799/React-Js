@@ -6,7 +6,7 @@ import Meals from "./Components/Meals/Meals"
 import Cart from "./Components/Cart/Cart"
 import CartProvider from "./store/CartProvider"
 import Footer from "./Components/UI/Footer/Footer"
-import CardUI from "./Components/Meals/MealsList"
+
 
 function App() {
   const [modal, setModal] = useState(false)
