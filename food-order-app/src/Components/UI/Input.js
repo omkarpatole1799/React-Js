@@ -28,7 +28,9 @@ function Input(props) {
         value={mealQuantity}
         {...props.input}
       />
-      <Button type="submit"><i className="fa-solid fa-cart-arrow-down"></i></Button>
+      <Button type="submit">
+        <i className="fa-solid fa-cart-arrow-down p-2"></i>
+      </Button>
     </form>
   )
 }

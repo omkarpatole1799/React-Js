@@ -1,34 +1,35 @@
-import React, {useState} from "react"
+import React, { useState } from "react"
 import "./App.css"
 import Navbar from "./Components/Header/Navbar"
 import Home from "./Components/Home/Home"
 import Meals from "./Components/Meals/Meals"
 import Cart from "./Components/Cart/Cart"
 import CartProvider from "./store/CartProvider"
-import Footer from "./Components/UI/Footer/Footer";
-
+import Footer from "./Components/UI/Footer/Footer"
+import CardUI from "./Components/Meals/MealsList"
 
 function App() {
-    const [modal, setModal] = useState(false)
-    const cartOpenHandler = () => {
-        setModal(true)
-    }
-    const cartCloseHandler = () => {
-        setModal(false)
-    }
-    return (
-        <CartProvider>
-            {modal && <Cart onClick={cartCloseHandler}/>}
+  const [modal, setModal] = useState(false)
+  const cartOpenHandler = () => {
+    setModal(true)
+  }
+  const cartCloseHandler = () => {
+    setModal(false)
+  }
 
-            <Navbar onCartButtonHandler={cartOpenHandler}/>
+  return (
+    <CartProvider>
+      {modal && <Cart onClick={cartCloseHandler} />}
 
-            <Home/>
+      <Navbar onCartButtonHandler={cartOpenHandler} />
 
-            <Meals/>
+      <Home />
 
-            <Footer/>
-        </CartProvider>
-    )
+      <Meals />
+
+      <Footer />
+    </CartProvider>
+  )
 }
 
 export default App

@@ -1,31 +1,56 @@
 import React from "react"
 import Card from "../UI/Card/Card"
 import MealsList from "./MealsList"
-import classes from './Meals.module.css'
+import classes from "./Meals.module.css"
+
+// image imports
+import tomato from "../../assets/images/tomato.jpg"
+import potato from "../../assets/images/potato-fry.jpg"
+import chilli from "../../assets/images/chilli.jpg"
+import brokoli from "../../assets/images/brokoli.jpg"
+import vegmix from "../../assets/images/veggie-mix.jpg"
 const DUMMY_MEALS = [
-  {
-    id: "m1",
-    mealName: "Tomato",
-    description: "Special fry",
-    price: 20,
-  },
+  // {
+  //   id: "m1",
+  //   mealName: "Tomato",
+  //   description: "Special fry",
+  //   price: 20,
+  //   image: tomato,
+  // },
   {
     id: "m2",
-    mealName: "puran poli",
+    mealName: "Puran poli",
     description: "Indian special",
     price: 620,
+    image: vegmix,
   },
   {
     id: "m3",
     mealName: "Potato Fry",
-    description: "Chipped potato fry",
+    description: "Chipped potato",
     price: 100,
+    image: potato,
   },
   {
     id: "m4",
-    mealName: "Veggiee Mix",
+    mealName: "Chilli fry",
     description: "All veggies mix",
-    price: 230,
+    price: 35,
+    image: chilli,
+  },
+  {
+    id: "m5",
+    mealName: "Potato Fry",
+    description: "Fried",
+    price: 60,
+    image: vegmix,
+  },
+  {
+    id: "m6",
+    mealName: "Mix",
+    description: "Mix veg",
+    price: 80,
+    image: brokoli,
   },
 ]
 
@@ -35,9 +60,11 @@ function Meals(props) {
       <div>
         <h3 className={classes.mealsListHeading}>Order Now!</h3>
       </div>
-      <ul>
-        <MealsList meals={DUMMY_MEALS} />
-      </ul>
+      <div className="container ">
+        <div className="row d-flex justify-content-center">
+          <MealsList meals={DUMMY_MEALS} />
+        </div>
+      </div>
     </Card>
   )
 }
