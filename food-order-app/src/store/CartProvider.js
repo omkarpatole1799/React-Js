@@ -1,10 +1,68 @@
 import React, { useReducer } from "react"
 import CartContext from "./cart-context"
 
+
+// =========
+import tomato from "../assets/images/tomato.jpg"
+import potato from "../assets/images/potato-fry.jpg"
+import chilli from "../assets/images/chilli.jpg"
+import brokoli from "../assets/images/brokoli.jpg"
+import vegmix from "../assets/images/veggie-mix.jpg"
+
+const DUMMY_MEALS = [
+  {
+    id: "m1",
+    mealName: "Tomato",
+    description: "Special fry",
+    price: 20,
+    image: tomato,
+    quantity: 0,
+  },
+  {
+    id: "m2",
+    mealName: "Puran poli",
+    description: "Indian special",
+    price: 620,
+    image: vegmix,
+    quantity: 0,
+  },
+  {
+    id: "m3",
+    mealName: "Potato Fry",
+    description: "Chipped potato",
+    price: 100,
+    image: potato,
+    quantity: 0,
+  },
+  {
+    id: "m4",
+    mealName: "Chilli fry",
+    description: "All veggies mix",
+    price: 35,
+    image: chilli,
+    quantity: 0,
+  },
+  {
+    id: "m5",
+    mealName: "Potato Fry",
+    description: "Fried",
+    price: 60,
+    image: vegmix,
+    quantity: 0,
+  },
+  {
+    id: "m6",
+    mealName: "Mix",
+    description: "Mix veg",
+    price: 80,
+    image: brokoli,
+    quantity: 0,
+  },
+]
+// =======
 const defaultCartState = {
-  items: [],
+  items: DUMMY_MEALS,
   totalAmount: 0,
-  totalItemCount: 0,
 }
 const cartReducer = (state, action) => {
   if (action.type === "ADD_ITEM") {
@@ -23,10 +81,8 @@ const cartReducer = (state, action) => {
       }
       cartItems = [...state.items]
       cartItems[exsistingItemIndex] = updatedItem
-      totalItemCount = updatedItem
     } else {
       cartItems = state.items.concat(action.item)
-      totalItemCount = currentCartItem
     }
     const totalAmount = cartItems
       .map((item) => {
@@ -38,7 +94,6 @@ const cartReducer = (state, action) => {
     return {
       items: cartItems,
       totalAmount: totalAmount,
-      totalItemCount: totalItemCount,
     }
   }
   if (action.type === "REMOVE_ITEM") {
@@ -93,7 +148,6 @@ const CartProvider = (props) => {
   const cartContext = {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
-    totalItemCount: cartState.totalItemCount,
     addItem: addItemHandler,
     removeItem: removeItemHandler,
   }

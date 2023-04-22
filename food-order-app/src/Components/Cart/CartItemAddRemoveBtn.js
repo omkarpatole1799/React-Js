@@ -6,7 +6,6 @@ function CartItemAddRemoveBtn(props) {
   const cartCtx = useContext(CartContext)
 
   const onAddItemHandler = (item) => {
-
     cartCtx.addItem({ ...item, quantity: 1 })
   }
   const onRemoveItemHandler = (id) => {
@@ -21,7 +20,7 @@ function CartItemAddRemoveBtn(props) {
       >
         +
       </Button>
-      <span> x {cartCtx.totalItemCount.quantity}</span>
+      <span> x {props.item.quantity}</span>
       <Button
         onClick={onRemoveItemHandler.bind(null, props.item.id)}
         className={classes.quantityButton}
