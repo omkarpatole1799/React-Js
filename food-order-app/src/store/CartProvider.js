@@ -60,6 +60,7 @@ const DUMMY_MEALS = [
   },
 ]
 // =======
+
 const defaultCartState = {
   items: DUMMY_MEALS,
   totalAmount: 0,
