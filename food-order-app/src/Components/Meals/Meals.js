@@ -5,7 +5,7 @@ import classes from "./Meals.module.css"
 import cartContext from "../../store/cart-context";
 
 
-function Meals(props) {
+function Meals() {
     const cartCtx = useContext(cartContext)
     return (
         <Card>

@@ -1,28 +1,28 @@
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #49495b;
-    color: white;
-    padding: 0 4rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #49495b;
+	color: white;
+	padding: 0 4rem;
 }
 .navbar ul {
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
 .navbarHeading {
-    font-size: 1.5rem;
+	font-size: 1.5rem;
 }
 
 .navbarItems {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    margin-botton: 0;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	margin-bottom: 0;
 }
 
-.navbarItems  {
-    list-style: none;
+.navbarItems {
+	list-style: none;
 }
 .navbarItems li {
-    margin: 1rem;
+	margin: 1rem;
 }
