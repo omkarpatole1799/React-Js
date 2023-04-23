@@ -21,7 +21,7 @@ function CartItemAddRemoveBtn(props) {
                 <div>
                     <Button
                         onClick={onAddItemHandler.bind(null, props.item)}
-                        className={classes.quantityButton}
+                        className={`m-1 ${classes.quantityButton}`}
                     >
                         +
                     </Button>
@@ -29,7 +29,7 @@ function CartItemAddRemoveBtn(props) {
                     <span> x {props.item.quantity}</span>
                     <Button
                         onClick={onRemoveItemHandler.bind(null, props.item.id)}
-                        className={classes.quantityButton}
+                        className={`m-1 ${classes.quantityButton}`}
                     >
                         -
                     </Button>

@@ -1,0 +1,23 @@
+.sidebar-container{
+    border: 2px solid red;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.shopping-cart-section{
+    border: 1px solid black;
+    margin-left: 1rem;
+}
+.order-summary-section{
+    border: 1px solid black;
+    margin-right: 1rem;
+
+}
+
+/*=================*/
+/*table css*/
+.table-heading{
+    padding: 1rem;
+    /*background-color: black;*/
+}
+/*=================*/

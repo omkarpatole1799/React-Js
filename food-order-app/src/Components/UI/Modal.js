@@ -6,7 +6,7 @@ function Overlay(props) {
 }
 
 function ModalOverlay(props) {
-  return <div className={classes.modal}>{props.children}</div>
+  return <div className={`${classes.modal}`}>{props.children}</div>
 }
 const portalElement = document.getElementById("modal-overlay")
 
