@@ -14,7 +14,7 @@ function CartItem(props) {
         <div className={classes.mealItemQuantityTotal}>
           <span>Quantity</span>
           <div>
-            <CartItemAddRemoveBtn item={props.meal} />
+            <CartItemAddRemoveBtn button={props.button} item={props.meal} />
           </div>
         </div>
         <div className={classes.mealTotal}>

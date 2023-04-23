@@ -1,12 +1,14 @@
 import React from "react"
 import CartItemAddRemoveBtn from "../Cart/CartItemAddRemoveBtn"
+import Button from "../UI/Button/Button";
 
 function MealsList(props) {
+
     return (
         <>
             {props.meals.map((item) => {
                 return (
-                    <div key={item.id} className="card m-2" style={{width: "13rem"}}>
+                    <div key={item.id} className="card m-2 " style={{width: "13rem"}}>
                         <img src={item.image} className="mt-2" alt="..."/>
                         <div className="card-body">
                             <h5 className="card-title">{item.mealName}</h5>

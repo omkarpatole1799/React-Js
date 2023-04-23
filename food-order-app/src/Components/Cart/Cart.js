@@ -7,7 +7,7 @@ import CartContext from "../../store/cart-context"
 
 function Cart(props) {
     const cartCtx = useContext(CartContext)
-
+    const [button,setButton] = useState(false)
     // add item handler
     const addItemHandler = (item) => {
         cartCtx.addItem({...item, quantity: 1})
@@ -32,7 +32,6 @@ function Cart(props) {
         return item.quantity > 0
     })
 
-    console.log(filteredItem)
     return (
         <Modal onClick={props.onClick}>
             <ul className={classes.cart}>

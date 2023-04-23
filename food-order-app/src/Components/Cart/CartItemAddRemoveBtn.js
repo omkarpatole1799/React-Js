@@ -1,34 +1,42 @@
-import React, { useContext } from "react"
+import React, {useContext, useState} from "react"
 import Button from "../UI/Button/Button"
 import classes from "./CartItemAddRemoveButton.module.css"
 import CartContext from "../../store/cart-context"
+import button from "../UI/Button/Button";
+
 function CartItemAddRemoveBtn(props) {
-  const cartCtx = useContext(CartContext)
+    const cartCtx = useContext(CartContext)
 
-  const onAddItemHandler = (item) => {
-    cartCtx.addItem({ ...item, quantity: 1 })
-  }
-  const onRemoveItemHandler = (id) => {
-    cartCtx.removeItem(id)
-  }
+    const onAddItemHandler = (item) => {
+        cartCtx.addItem({...item, quantity: 1})
+    }
+    const onRemoveItemHandler = (id) => {
+        cartCtx.removeItem(id)
+    }
 
-  return (
-    <>
-      <Button
-        onClick={onAddItemHandler.bind(null, props.item)}
-        className={classes.quantityButton}
-      >
-        +
-      </Button>
-      <span> x {props.item.quantity}</span>
-      <Button
-        onClick={onRemoveItemHandler.bind(null, props.item.id)}
-        className={classes.quantityButton}
-      >
-        -
-      </Button>
-    </>
-  )
+    return (
+        <>
+            {props.item.quantity === 0 && <Button className='p-1' onClick={onAddItemHandler.bind(null, props.item)}>Add</Button>}
+            {props.item.quantity > 0 &&
+                <div>
+                    <Button
+                        onClick={onAddItemHandler.bind(null, props.item)}
+                        className={classes.quantityButton}
+                    >
+                        +
+                    </Button>
+
+                    <span> x {props.item.quantity}</span>
+                    <Button
+                        onClick={onRemoveItemHandler.bind(null, props.item.id)}
+                        className={classes.quantityButton}
+                    >
+                        -
+                    </Button>
+                </div>
+            }
+        </>
+    )
 }
 
 export default CartItemAddRemoveBtn
