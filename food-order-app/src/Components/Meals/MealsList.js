@@ -12,7 +12,7 @@ function MealsList(props) {
 							<h5 className="card-title">{item.mealName}</h5>
 							<div className="card-text">
 								<div>{item.description}</div>
-								<div>$ {item.price}</div>
+								<div>₹ {item.price}</div>
 								<CartItemAddRemoveBtn item={item} />
 							</div>
 						</div>

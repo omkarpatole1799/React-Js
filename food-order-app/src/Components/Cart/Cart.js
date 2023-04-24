@@ -2,7 +2,7 @@ import React, {useContext, useState} from "react"
 import "./Cart.css"
 import CartContext from "../../store/cart-context"
 import CartItemAddRemoveBtn from "./CartItemAddRemoveBtn";
-import Modal from "../UI/Modal";
+
 import Button from "../UI/Button/Button";
 
 function Cart(props) {

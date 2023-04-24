@@ -7,6 +7,7 @@ import potato from "../assets/images/potato-fry.jpg"
 import chilli from "../assets/images/chilli.jpg"
 import brokoli from "../assets/images/brokoli.jpg"
 import vegmix from "../assets/images/veggie-mix.jpg"
+import puranpoli from "../assets/images/puran-poli.jpg"
 
 const DUMMY_MEALS = [
 	{
@@ -22,7 +23,7 @@ const DUMMY_MEALS = [
 		mealName: "Puran poli",
 		description: "Indian special",
 		price: 620,
-		image: vegmix,
+		image: puranpoli,
 		quantity: 0,
 	},
 	{
@@ -30,7 +31,7 @@ const DUMMY_MEALS = [
 		mealName: "Potato Fry",
 		description: "Chipped potato",
 		price: 100,
-		image: potato,
+		image: vegmix,
 		quantity: 0,
 	},
 	{
@@ -39,14 +40,6 @@ const DUMMY_MEALS = [
 		description: "All veggies mix",
 		price: 35,
 		image: chilli,
-		quantity: 0,
-	},
-	{
-		id: "m5",
-		mealName: "Potato Fry",
-		description: "Fried",
-		price: 60,
-		image: vegmix,
 		quantity: 0,
 	},
 	{
