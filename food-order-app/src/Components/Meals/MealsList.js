@@ -6,7 +6,7 @@ function MealsList(props) {
 		<>
 			{props.meals.map((item) => {
 				return (
-					<div className="m-5 sm:m-2 md:m-2 lg:m-5 border-2 rounded-3xl drop-shadow-xl  hover:border-0 hover:drop-shadow-2xl hover:bg-[#111827] hover:text-[#D1D7DC]">
+					<div className="mt-1 ms-0.5 mt-0.5 sm:m-2 md:m-2 lg:m-5 border-2 rounded-3xl drop-shadow-xl  hover:border-0 hover:drop-shadow-2xl hover:bg-[#111827] hover:text-[#D1D7DC]">
 						<div className="">
 							<img
 								src={item.image}
@@ -29,7 +29,7 @@ function MealsList(props) {
 								<span>4 person</span>
 							</div>
 							<hr />
-							<div className="flex justify-between items-center pt-2 ps-10 pe-10 pb-1 sm:pb-3 sm:pt-3 sm:ps-3.5 sm:pe-3.5 ">
+							<div className="flex justify-between items-center h-10 pt-2 ps-2 pe-2 pb-1 sm:pb-3 sm:pt-3 sm:ps-3.5 sm:pe-3.5 ">
 								<div className="text-sm md:text-sm lg:text-2xl font-semibold">
 									₹{" "}
 									{item.quantity > 0

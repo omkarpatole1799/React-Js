@@ -29,7 +29,7 @@ function CartItemAddRemoveBtn(props) {
 				<div>
 					<Button
 						onClick={onRemoveItemHandler.bind(null, props.item.id)}
-						className="border-2 h-9 px-3 rounded-md bg-[#111827] text-[#D1D7DC] md:px-2 md:text-sm"
+						className="rounded-md bg-[#111827] text-[#D1D7DC] ps-0.5 pe-0.5 md:p-0.5 text-sm lg:text-lg lg:p-1"
 					>
 						<i className="fa-solid fa-minus"></i>
 					</Button>
@@ -37,7 +37,7 @@ function CartItemAddRemoveBtn(props) {
 					<span> x {props.item.quantity}</span>
 					<Button
 						onClick={onAddItemHandler.bind(null, props.item)}
-						className="h-9 bg-[#111827] text-[#D1D7DC] md:px-2 md:text-sm"
+						className="rounded-md bg-[#111827] text-[#D1D7DC] ps-0.5 pe-0.5 md:p-0.5 text-sm lg:text-lg lg:p-1"
 					>
 						<i className="fa-solid fa-plus"></i>
 					</Button>
