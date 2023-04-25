@@ -1,24 +1,17 @@
-import React, {useContext} from "react"
-import Card from "../UI/Card/Card"
+import React, { useContext } from "react"
 import MealsList from "./MealsList"
-import classes from "./Meals.module.css"
-import cartContext from "../../store/cart-context";
-
+import cartContext from "../../store/cart-context"
 
 function Meals() {
-    const cartCtx = useContext(cartContext)
-    return (
-        <Card>
-            <div>
-                <h3 className={classes.mealsListHeading}>Order Now!</h3>
-            </div>
-            <div className="container ">
-                <div className="row d-flex justify-content-center">
-                    <MealsList meals={cartCtx.items}/>
-                </div>
-            </div>
-        </Card>
-    )
+	const cartCtx = useContext(cartContext)
+
+	return (
+		<>
+			<div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5">
+				<MealsList meals={cartCtx.items} />
+			</div>
+		</>
+	)
 }
 
 export default Meals

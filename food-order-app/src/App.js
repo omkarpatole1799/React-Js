@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import "./App.css"
-import Navbar from "./Components/Header/Navbar"
+// import Navbar from "./Components/Header/Navbar"
 
 import Meals from "./Components/Meals/Meals"
 import Cart from "./Components/Cart/Cart"
@@ -13,14 +13,14 @@ function App() {
 	const cartCloseHandler = () => {
 		setShowCart(false)
 	}
-	const cartOpenHandler = () => {
-		setShowCart(true)
-	}
+	// const cartOpenHandler = () => {
+	// 	setShowCart(true)
+	// }
 	return (
 		<CartProvider>
 			{showCart && <Cart onClick={cartCloseHandler} />}
 
-			<Navbar onCartButtonHandler={cartOpenHandler} />
+			{/* <Navbar onCartButtonHandler={cartOpenHandler} /> */}
 
 			<Meals />
 

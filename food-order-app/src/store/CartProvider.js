@@ -3,11 +3,12 @@ import CartContext from "./cart-context"
 
 // =========
 import tomato from "../assets/images/tomato.jpg"
-import potato from "../assets/images/potato-fry.jpg"
 import chilli from "../assets/images/chilli.jpg"
-import brokoli from "../assets/images/brokoli.jpg"
-import vegmix from "../assets/images/veggie-mix.jpg"
-import puranpoli from "../assets/images/puran-poli.jpg"
+import pizza from '../assets/images/pizza.jpg'
+import sandwich from '../assets/images/sandwich.jpg'
+import burger from '../assets/images/burger.jpg'
+import frenchFries from '../assets/images/french-fries.jpg'
+import noodles from '../assets/images/noodles.jpg'
 
 const DUMMY_MEALS = [
 	{
@@ -20,34 +21,50 @@ const DUMMY_MEALS = [
 	},
 	{
 		id: "m2",
-		mealName: "Puran poli",
-		description: "Indian special",
-		price: 620,
-		image: puranpoli,
+		mealName: "Pizza",
+		description: "Chees Mix",
+		price: 320,
+		image: pizza,
 		quantity: 0,
 	},
 	{
 		id: "m3",
-		mealName: "Potato Fry",
-		description: "Chipped potato",
-		price: 100,
-		image: vegmix,
-		quantity: 0,
-	},
-	{
-		id: "m4",
 		mealName: "Chilli fry",
 		description: "All veggies mix",
-		price: 35,
+		price: 89.55,
 		image: chilli,
 		quantity: 0,
 	},
 	{
+		id: "m4",
+		mealName: "Sandwich",
+		description: "Chess Burst",
+		price: 55.99,
+		image: sandwich,
+		quantity: 0,
+	},
+	{
+		id: "m5",
+		mealName: "French Fries",
+		description: "Roasted",
+		price: 29.89,
+		image: frenchFries,
+		quantity: 0,
+	},
+	{
 		id: "m6",
-		mealName: "Mix",
-		description: "Mix veg",
-		price: 80,
-		image: brokoli,
+		mealName: "Burger",
+		description: "Chess Burst",
+		price: 35.99,
+		image: burger,
+		quantity: 0,
+	},
+	{
+		id: "m7",
+		mealName: "Noodles",
+		description: "Chess Burst",
+		price: 55.99,
+		image: noodles,
 		quantity: 0,
 	},
 ]

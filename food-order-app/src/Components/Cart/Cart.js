@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react"
+import React, {useContext} from "react"
 import "./Cart.css"
 import CartContext from "../../store/cart-context"
 import CartItemAddRemoveBtn from "./CartItemAddRemoveBtn";
@@ -9,12 +9,12 @@ function Cart(props) {
     const cartCtx = useContext(CartContext)
 
     // add item handler
-    const addItemHandler = (item) => {
-        cartCtx.addItem({...item, quantity: 1})
-    }
-    const removeItemHandler = (id) => {
-        cartCtx.removeItem(id)
-    }
+    // const addItemHandler = (item) => {
+    //     cartCtx.addItem({...item, quantity: 1})
+    // }
+    // const removeItemHandler = (id) => {
+    //     cartCtx.removeItem(id)
+    // }
     const totalAmount = cartCtx.totalAmount
 
     const emptyCart = () => {
