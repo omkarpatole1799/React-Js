@@ -1,6 +1,5 @@
 import React, { useContext } from "react"
 import Button from "../UI/Button/Button"
-import classes from "./CartItemAddRemoveButton.module.css"
 import CartContext from "../../store/cart-context"
 
 function CartItemAddRemoveBtn(props) {
@@ -21,7 +20,7 @@ function CartItemAddRemoveBtn(props) {
 						onClick={onAddItemHandler.bind(null, props.item)}
 						className="rounded-md bg-[#111827] text-[#D1D7DC] p-1 md:p-0.5 text-sm lg:text-lg lg:p-1"
 					>
-						<i class="fa-sharp fa-solid fa-cart-plus"></i>
+						<i className="fa-sharp fa-solid fa-cart-plus"></i>
 					</Button>
 				</div>
 			)}

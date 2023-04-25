@@ -6,7 +6,7 @@ function MealsList(props) {
 		<>
 			{props.meals.map((item) => {
 				return (
-					<div className="mt-1 ms-0.5 mt-0.5 sm:m-2 md:m-2 lg:m-5 border-2 rounded-3xl drop-shadow-xl  hover:border-0 hover:drop-shadow-2xl hover:bg-[#111827] hover:text-[#D1D7DC]">
+					<div key={item.id} className="mt-1 ms-0.5 mt-0.5 sm:m-2 md:m-2 lg:m-5 border-2 rounded-3xl drop-shadow-xl  hover:border-0 hover:drop-shadow-2xl hover:bg-[#111827] hover:text-[#D1D7DC]">
 						<div className="">
 							<img
 								src={item.image}
@@ -21,8 +21,8 @@ function MealsList(props) {
 								</h2>
 							</div>
 							<hr />
-							<div className="flex justify-around text-xs md:text-xs lg:text-sm md:ps-1 md:pe-1 pb-3 pt-3 ps-3 pe-3">
-								<span>60 calories</span>
+							<div className="flex justify-around text-xs md:text-xs lg:text-sm md:ps-1 md:pe-1 pb-3 pt-3 ps-1 pe-1">
+								<span >60 calories</span>
 								<p className="">
 									<i className="fa-solid fa-circle fa-2xs"></i>
 								</p>
@@ -40,18 +40,6 @@ function MealsList(props) {
 									<CartItemAddRemoveBtn item={item} />
 								</div>
 							</div>
-							{/* <div className="flex items-center justify-between pt-3">
-								<div>
-									<button className="border-2 h-9 px-1 rounded-md bg-[#111827] text-[#D1D7DC] md:text-xs">
-										Add to cart
-									</button>
-								</div>
-								<div>
-									<button className="border-slate-200 h-9 px-1 rounded-md bg-[#FFFFFF] text-[#111827] md:text-xs">
-										Buy Now
-									</button>
-								</div>
-							</div> */}
 						</div>
 					</div>
 				)

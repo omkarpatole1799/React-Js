@@ -1,43 +1,32 @@
-import React, {useContext, useEffect, useState} from "react"
+import React, { useContext } from "react"
 import Button from "../UI/Button/Button"
 import CartContext from "../../store/cart-context"
-import "./CartButton.css"
 
 function CartButton(props) {
-    const cartCxt = useContext(CartContext)
+	const cartCxt = useContext(CartContext)
 
-    const [cartButtonAnimated, setCartButtonAnimated] = useState(false)
+	const totalCartItem = cartCxt.items.reduce((cur, item) => {
+		return cur + item.quantity
+	}, 0)
 
-    const totalCartItem = cartCxt.items.reduce((cur, item) => {
-        return cur + item.quantity
-    }, 0)
-
-    const cartButtonClasses = `cart-button ${cartButtonAnimated ? `bump` : ''}`
-
-    useEffect(() => {
-        if (totalCartItem === 0) return
-
-        setCartButtonAnimated(true)
-
-        const buttonAnimationTimer = setTimeout(() => {
-            setCartButtonAnimated(false)
-        }, 300)
-
-        // cleanup function
-        return () => {
-            clearTimeout(buttonAnimationTimer)
-        }
-    }, [totalCartItem])
-
-    return (
-        <Button onClick={props.onClick} className={cartButtonClasses}>
-      <span className="cart-logo">
-        <i className="fa-solid fa-cart-arrow-down"></i>
-      </span>
-            <span className="cart-btn-heading">Cart</span>
-            <span className="cart-total">{totalCartItem}</span>
-        </Button>
-    )
+	return (
+		<Button
+			className="rounded-md bg-[#111827] text-[#D1D7DC] hover:bg-[#FFFFFF] hover:text-[#111827] rounded-2xl drop-shadow-2xl hover:drop-shadow-3xl ps-2 pe-2 md:p-0.5 text-sm lg:text-lg lg:p-1"
+			onClick={props.onClick}
+		>
+			<span className="pe-1">
+				<i className="fa-solid fa-cart-arrow-down"></i>
+			</span>
+			<span className="ps-1 pe-2">Cart</span>
+			{totalCartItem ? (
+				<span className="bg-[#D1D7DC] rounded-2xl text-[#111827] ps-1 pe-1">
+					{totalCartItem}
+				</span>
+			) : (
+				""
+			)}
+		</Button>
+	)
 }
 
 export default CartButton
