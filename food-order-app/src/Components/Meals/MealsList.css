@@ -1,0 +1,21 @@
+.bump_price {
+    animation: bump_price 300ms ease-out;
+}
+
+@keyframes bump_price {
+    0% {
+        transform: scale(1);
+    }
+    10% {
+        transform: scale(1.7);
+    }
+    30% {
+        transform: scale(2.15);
+    }
+    50% {
+        transform: scale(2.35);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

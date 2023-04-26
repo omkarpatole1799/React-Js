@@ -18,7 +18,7 @@ function CartItemAddRemoveBtn(props) {
 				<div className="flex justify-end">
 					<Button
 						onClick={onAddItemHandler.bind(null, props.item)}
-						className="rounded-md bg-[#111827] text-[#D1D7DC] p-1 md:p-0.5 text-sm lg:text-lg lg:p-1"
+						className="rounded-2xl bg-[#111827] text-[#D1D7DC] p-1 md:p-0.5 text-sm lg:text-lg lg:p-1"
 					>
 						<i className="fa-sharp fa-solid fa-cart-plus"></i>
 					</Button>
@@ -28,15 +28,15 @@ function CartItemAddRemoveBtn(props) {
 				<div>
 					<Button
 						onClick={onRemoveItemHandler.bind(null, props.item.id)}
-						className="rounded-md bg-[#111827] text-[#D1D7DC] ps-0.5 pe-0.5 md:p-0.5 text-sm lg:text-lg lg:p-1"
+						className="rounded-2xl bg-[#111827] text-[#D1D7DC] ps-1 pe-1 md:p-0.5 text-sm lg:text-lg lg:p-1"
 					>
 						<i className="fa-solid fa-minus"></i>
 					</Button>
 
-					<span> x {props.item.quantity}</span>
+					<span className="ps-1 pe-1">{props.item.quantity}</span>
 					<Button
 						onClick={onAddItemHandler.bind(null, props.item)}
-						className="rounded-md bg-[#111827] text-[#D1D7DC] ps-0.5 pe-0.5 md:p-0.5 text-sm lg:text-lg lg:p-1"
+						className="rounded-2xl bg-[#111827] text-[#D1D7DC] ps-1 pe-1 md:p-0.5 text-sm lg:text-lg lg:p-1"
 					>
 						<i className="fa-solid fa-plus"></i>
 					</Button>

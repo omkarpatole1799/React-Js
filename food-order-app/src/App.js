@@ -8,7 +8,10 @@ import Cart from "./Components/Cart/Cart"
 import CartProvider from "./store/CartProvider"
 import Footer from "./Components/UI/Footer/Footer"
 
+import Cart2 from "./Components/Cart/Cart2"
+
 function App() {
+	
 	const [showCart, setShowCart] = useState(false)
 	const cartCloseHandler = () => {
 		setShowCart(false)
@@ -18,9 +21,9 @@ function App() {
 	}
 	return (
 		<CartProvider>
-			{showCart && <Cart onClick={cartCloseHandler} />}
+			{showCart && <Cart2 onShowCart={showCart} onClick={cartCloseHandler} />}
 
-			<Navbar onCartButtonHandler={cartOpenHandler} />
+			<Navbar onClick={cartOpenHandler} />
 
 			<Meals />
 
