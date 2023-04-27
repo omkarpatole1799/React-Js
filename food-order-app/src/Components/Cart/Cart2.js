@@ -6,22 +6,25 @@ import emptyCart from "../../assets/images/empty-cart.png"
 import OrderPlaced from "./OrderPlaced"
 
 function Cart2UI(props) {
-    const [orderPlaced, setOrderPlaced] = useState(false)
+	const [orderPlaced, setOrderPlaced] = useState(false)
 	const cartCtx = useContext(CartContext)
 	const totalAmount = cartCtx.totalAmount
 	const filteredItems = cartCtx.items.filter((item) => {
 		return item.quantity > 0
 	})
 
+	// console.log(props.showCart)
+
+	const cartClassName = `absolute right-0 z-40 bg-[#EBEAEF] top-0 h-full w-full p-2 ${props.showCart ? "translate-x-0" : "translate-x-full"} transition-all duration-400 ease-in`
+	console.log(props.showCart)
+
 	return (
 		<>
 			<div
-				className={`absolute ${
-					!props.onShowCart ? "top-1" : "top-[-1000px]"
-				} right-0 z-40 bg-[#EBEAEF] top-20 h-full w-full p-2 transition-all duration-500 ease-in`}
+				className={cartClassName}
 			>
 				<div className="pt-3 ps-4 flex justify-between items-center">
-					<button onClick={props.onClick} className="ms-3">
+					<button onClick={props.onCloseCart} className="ms-3">
 						<i className="fa-solid fa-chevron-left"></i>
 					</button>
 					<div>
@@ -42,7 +45,7 @@ function Cart2UI(props) {
 							<img className="w-40 h-auto" src={emptyCart} alt="" />
 							<p className="pt-5 text-lg font-semibold">Woops!!! Empty Cart</p>
 							<button
-								onClick={props.onClick}
+								onClick={props.onCloseCart}
 								className="mt-3 bg-[#111827] text-[#D1D7DC] ps-3 pe-3 pt-2 pb-2 rounded-3xl"
 							>
 								Go Shopping
@@ -110,14 +113,14 @@ function Cart2UI(props) {
 						</div>
 
 						<div className="flex items-center justify-center mt-2">
-							<button onClick={()=>setOrderPlaced(true)} className="bg-[#111827] text-[#D1D7DC] ps-3 pe-3 pt-2 pb-2 rounded-3xl">
+							<button onClick={() => setOrderPlaced(true)} className="bg-[#111827] text-[#D1D7DC] ps-3 pe-3 pt-2 pb-2 rounded-3xl">
 								Proceed To Checkout
 							</button>
 						</div>
 					</div>
-                )}
-                
-                {orderPlaced && <OrderPlaced onClick={props.onClick} />}
+				)}
+
+				{orderPlaced && <OrderPlaced onClick={props.onClick} />}
 			</div>
 		</>
 	)
@@ -125,7 +128,7 @@ function Cart2UI(props) {
 
 function Cart2(props) {
 	return DOM.createPortal(
-		<Cart2UI onClick={props.onClick} />,
+		<Cart2UI showCart={props.onShowCart} onCloseCart={props.onCloseCart} />,
 		document.getElementById("cart")
 	)
 }

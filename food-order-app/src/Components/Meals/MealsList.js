@@ -15,9 +15,8 @@ function MealsList(props) {
 		}
 	}, [props])
 
-	const priceClasses = `${
-		priceAnimation ? "bump_price" : ""
-	} text-sm md:text-sm lg:text-2xl font-semibold`
+	const priceClasses = `${priceAnimation ? "bump_price" : ""
+		} text-sm md:text-sm lg:text-2xl font-semibold`
 
 	return (
 		<>
