@@ -1,38 +1,50 @@
-import React from 'react'
-import Button from './UI/Button'
-const TaskList = () => {
-    const fetchTask = async () => {
+import React,{useState, useEffect} from 'react'
+const TaskList = (props) => {
+
+
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [tasks, setTasks] = useState([]);
+
+    const fetchTasks = async (taskText) => {
+        setIsLoading(true);
+        setError(null);
         try {
             const response = await fetch(
                 'https://meals-io-2bdf2-default-rtdb.asia-southeast1.firebasedatabase.app/tasks.json'
             );
 
             if (!response.ok) {
-                throw new Error('Error')
+                throw new Error('Request failed!');
             }
 
             const data = await response.json();
-            console.log(data)
-
             const loadedTasks = [];
 
             for (const taskKey in data) {
-                loadedTasks.push({ id: taskKey, text: data[taskKey].text });
+                loadedTasks.push({ id: taskKey, taskName: data[taskKey].taskName });
             }
 
-            console.log(loadedTasks)
+            setTasks(loadedTasks);
 
-            console.log("end")
-        } catch (error) {
-            const errorMessage = error.message
-            console.log(errorMessage)
+        } catch (err) {
+            setError(err.message || 'Something went wrong!');
         }
+        setIsLoading(false);
+    };
 
-    }
+    useEffect(() => {
+        fetchTasks();
+    }, [props.task]);
 
     return <>
-        <p>Task List</p>
-        <Button onClick={fetchTask}>Get tasks</Button>
+        <div>
+            <ul>
+                {tasks.map((item) => {
+                    return <li key={item.id}>{item.taskName}</li>
+                })}
+            </ul>
+        </div >
     </>
 }
 export default TaskList
