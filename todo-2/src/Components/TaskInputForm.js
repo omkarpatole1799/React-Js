@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Button from '../Components/UI/Button'
+import useHttp from '../hooks/use-http'
 const TaskInputForm = (props) => {
 
+    const { isLoading, error, sendRequest: fetchTasks } = useHttp()
+
     const [taskName, setTaskName] = useState('')
-    const [error, setError] = useState(null)
-    const [isLoading, setIsLoading] = useState(false)
 
     const inputHandler = (e) => {
         const enteredValue = e.target.value
@@ -20,35 +21,18 @@ const TaskInputForm = (props) => {
         }
     }
 
-
     const taskInputHandler = async (taskName) => {
-        setError(null)
-        setIsLoading(true)
-        try {
-            const response = await fetch('https://meals-io-2bdf2-default-rtdb.asia-southeast1.firebasedatabase.app/tasks.json', {
-                method: 'POST',
-                body: JSON.stringify({
-                    taskName: taskName
-                }),
-                headers: {
-                    'Content-type': 'application/json',
-                },
-            })
-
-            if (!response.ok) {
-                throw new Error('Something went wrong')
-            }
-
-            const data = await response.json();
-
-            const generatedId = data.name;
+        const dataTransform = (data) => {
+            const generatedId = data.name
             props.onAddTask({ id: generatedId, taskName: taskName })
+        }
 
-        }
-        catch (error) {
-            setError(error.message)
-        }
-        setIsLoading(false)
+        fetchTasks({
+            url: 'https://meals-io-2bdf2-default-rtdb.asia-southeast1.firebasedatabase.app/tasks.json',
+            method: 'POST',
+            body: { taskName: taskName },
+            headers: { 'Content-type': 'application/json' }
+        },dataTransform)
     }
 
     return <>
