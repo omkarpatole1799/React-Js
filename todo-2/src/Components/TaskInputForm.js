@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Button from '../Components/UI/Button'
 import useHttp from '../hooks/use-http'
 const TaskInputForm = (props) => {
 
@@ -32,17 +31,19 @@ const TaskInputForm = (props) => {
             method: 'POST',
             body: { taskName: taskName },
             headers: { 'Content-type': 'application/json' }
-        },dataTransform)
+        }, dataTransform)
+        setTaskName('')
     }
 
+    
+
     return <>
-        <form onSubmit={formSubmitHandler}>
-            <div>
-                <label htmlFor="">Task Name</label>
-                <input onChange={inputHandler} className='border-2' type="text" />
-            </div>
-            <div>
-                <Button>{isLoading ? 'Adding' : 'Add Task'}</Button>
+        <form className='p-4 pt-10' onSubmit={formSubmitHandler}>
+            <div className='relative bg-[#24344E] flex flex-col items-center w-full rounded-2xl'>
+                <input value={taskName} id='username' type="text" className='text-black p-4 rounded-2xl peer w-full transition-all duration-500 ease-in' onChange={inputHandler} />
+                <label htmlFor='username' className='absolute top-3 font-semibold text-xl text-black peer-focus:text-white peer-focus:top-[-30px] 
+                                  cursor-text transition-all duration-500 ease-in' >Task Name</label>
+                <button className='p-2'>{isLoading ? 'Adding...' : 'Add Task'}</button>
             </div>
         </form>
     </>
