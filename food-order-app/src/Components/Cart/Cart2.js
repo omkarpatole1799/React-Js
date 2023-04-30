@@ -120,7 +120,7 @@ function Cart2UI(props) {
 					</div>
 				)}
 
-				{orderPlaced && <OrderPlaced onClick={props.onClick} />}
+				{orderPlaced && <OrderPlaced onClick={props.onCloseCart} />}
 			</div>
 		</>
 	)
