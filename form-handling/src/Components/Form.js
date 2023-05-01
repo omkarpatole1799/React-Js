@@ -1,6 +1,7 @@
 import React from 'react'
 import useInput from '../Hooks/use-input'
 const Form = () => {
+
     const {
         value: nameInputValue,
         enteredValueValid: nameIsValid,
@@ -12,12 +13,12 @@ const Form = () => {
 
     const {
         value: emailInputValue,
-        enterdValueValid: emailIsValid,
+        enteredValueValid: emailIsValid,
         enterdValueInValid: emailIsInValid,
         valueChangeHandler: emailChangeHandler,
         valueBlurHandler: emailBlurHandler,
         reset: resetEmailInput
-     } = useInput(value => value.trim().includes('@'))
+    } = useInput(value => value.trim().includes('@'))
 
     let formIsValid = false
     if (nameIsValid && emailIsValid) {
@@ -26,7 +27,7 @@ const Form = () => {
 
     const formSubmitHandler = (e) => {
         e.preventDefault()
-        if (!nameIsValid) {
+        if (!nameIsValid && !emailIsValid) {
             return
         }
         resetNameInput()
