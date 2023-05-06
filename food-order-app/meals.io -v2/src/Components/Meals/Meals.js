@@ -8,11 +8,9 @@ function Meals() {
 	const cartCtx = useContext(cartContext)
 	const [mealsData, setMealsData] = useState([])
 
-	
 	const { fetchData, error, loading } = useHttp()
 
 	useEffect(() => {
-		
 		const transformData = (data) => {
 			let mealData = []
 			for (const key in data) {
@@ -36,7 +34,7 @@ function Meals() {
 		<>
 			<div className={classNames}>
 				{error && <p>{error}</p>}
-				{!error & loading && <Loading />}
+				{!error && loading && <Loading />}
 				{!error && !loading && <MealsList meals={mealsData} />}
 			</div>
 		</>
