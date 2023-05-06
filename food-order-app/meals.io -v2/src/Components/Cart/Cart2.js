@@ -3,23 +3,40 @@ import DOM from "react-dom"
 import CartContext from "../../store/cart-context"
 import CartItemAddRemoveBtn from "./CartItemAddRemoveBtn"
 import emptyCart from "../../assets/images/empty-cart.png"
-import OrderPlaced from "./OrderPlaced"
+import CheckoutForm from "./CheckoutForm"
 
 function Cart2UI(props) {
-	const [orderPlaced, setOrderPlaced] = useState(false)
+	const [checkout, setCheckout] = useState(false)
 	const cartCtx = useContext(CartContext)
 	const totalAmount = cartCtx.totalAmount
+
+	// get items which are added in cart
 	const filteredItems = cartCtx.items.filter((item) => {
 		return item.quantity > 0
 	})
 
+	const checkOutFormHandler = () => {
+		setCheckout(true)
+	}
+	const onCheckoutCancel = () => {
+		setCheckout(false)
+	}
+	const onUserConfirm = (userData) => {
+		fetch('https://meals-io-2bdf2-default-rtdb.asia-southeast1.firebasedatabase.app/userCart.json', {
+			method: 'POST',
+			body: JSON.stringify({
+				user: userData,
+				cartItems: filteredItems,
+			}),
+			headers: {
+				"Content-type": "application/json",
+			}
+		})
+	}
 	const cartClassName = `absolute right-0 z-40 bg-[#EBEAEF] top-0 h-full w-full p-2 ${props.showCart ? "translate-x-0" : "translate-x-full"} transition-all duration-400 ease-in`
-
 	return (
 		<>
-			<div
-				className={cartClassName}
-			>
+			<div className={cartClassName}>
 				<div className="pt-3 ps-4 flex justify-between items-center">
 					<button onClick={props.onCloseCart} className="ms-3">
 						<i className="fa-solid fa-chevron-left"></i>
@@ -37,7 +54,7 @@ function Cart2UI(props) {
 					</div>
 				</div>
 				<div className="overflow-y-scroll p-3 h-[25rem]">
-					{filteredItems.length === 0 && !orderPlaced && (
+					{filteredItems.length === 0 && (
 						<div className="flex flex-col items-center justify-center mt-20">
 							<img className="w-40 h-auto" src={emptyCart} alt="" />
 							<p className="pt-5 text-lg font-semibold">Woops!!! Empty Cart</p>
@@ -84,7 +101,7 @@ function Cart2UI(props) {
 						})}
 				</div>
 
-				{filteredItems.length > 0 && !orderPlaced && (
+				{filteredItems.length > 0 && (
 					<div className="absolute bottom-10 w-full pe-4">
 						<div className="flex justify-between p-4">
 							<span className="font-semibold">Subtotal</span>
@@ -107,14 +124,13 @@ function Cart2UI(props) {
 						</div>
 
 						<div className="flex items-center justify-center mt-2">
-							<button onClick={() => setOrderPlaced(true)} className="bg-[#111827] text-[#D1D7DC] ps-3 pe-3 pt-2 pb-2 rounded-3xl">
+							<button onClick={checkOutFormHandler} className="bg-[#111827] text-[#D1D7DC] ps-3 pe-3 pt-2 pb-2 rounded-3xl">
 								Proceed To Checkout
 							</button>
 						</div>
 					</div>
 				)}
-
-				{orderPlaced && <OrderPlaced onClick={props.onCloseCart} />}
+				{checkout && <CheckoutForm onCheckout={checkout} onCancel={onCheckoutCancel} onCloseCart={props.onCloseCart} onConfirm={onUserConfirm} />}
 			</div>
 		</>
 	)
@@ -122,7 +138,7 @@ function Cart2UI(props) {
 
 function Cart2(props) {
 	return DOM.createPortal(
-		<Cart2UI showCart={props.onShowCart} onCloseCart={props.onCloseCart} />,
+		<Cart2UI showCart={props.showCart} onCloseCart={props.onCloseCart} />,
 		document.getElementById("cart")
 	)
 }
