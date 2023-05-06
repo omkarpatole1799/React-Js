@@ -8,7 +8,7 @@ const TaskList = (props) => {
                 {props.task.map((item) => {
                     return  <div className='bg-[#24344E] mb-4 flex p-3 rounded-2xl drop-shadow-2xl'>
                                 <div className='w-20 flex items-center justify-center'>
-                                    <i class="fa-sharp fa-solid fa-list-check"></i>
+                                    <i className="fa-sharp fa-solid fa-list-check"></i>
                                 </div>
                                 <div className='relative w-full'>
                                     <li key={item.id} className='text-lg font-semibold'>{item.taskName}</li>
@@ -16,7 +16,7 @@ const TaskList = (props) => {
                                 </div>
                                 <div className='w-3 pe-5 flex items-center
                                                 justify-center'>
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    <i className="fa-solid fa-ellipsis-vertical"></i>
                                 </div>
                             </div>
                     })}

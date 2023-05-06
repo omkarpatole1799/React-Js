@@ -5,10 +5,10 @@ function NavbarUI(props) {
     return <>
         <div className='flex justify-between items-center ps-7 pe-7 pt-2 pb-2 absolute fixed bottom-0 z-10 
                         bg-[#071427] w-full h-[5rem] text-white rounded-t-2xl text-3xl'>
-            <i class="fa-solid fa-house"></i>
-            <i class="fa-solid fa-list-check"></i>
-            <button><i class="fa-solid fa-plus bg-[#C5EAA7] p-1 rounded-3xl text-[#121D17]"></i></button>
-            <i class="fa-solid fa-user"></i>
+            <i className="fa-solid fa-house"></i>
+            <i className="fa-solid fa-list-check"></i>
+            <button><i className="fa-solid fa-plus bg-[#C5EAA7] p-1 rounded-3xl text-[#121D17]"></i></button>
+            <i className="fa-solid fa-user"></i>
         </div>
     </>
 }

@@ -7,7 +7,7 @@ const LoadingBackdrop = () => {
 
 const LoadingUI = () => {
     return <div className='text-white absolute z-[110] h-10 w-10 flex items-center justify-center top-[15rem] left-[12rem] animate-spin'>
-        <i class="fa-solid fa-spinner text-[3rem]"></i>
+        <i className="fa-solid fa-spinner text-[3rem]"></i>
     </div>
 }
 
