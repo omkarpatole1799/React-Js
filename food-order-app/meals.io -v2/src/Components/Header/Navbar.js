@@ -4,7 +4,7 @@ const Navbar = (props) => {
 	let [open, setOpen] = useState(false)
 
 	const navOpenHandler = () => {
-		if (props.onShowCart) {
+		if (props.showCart) {
 			setOpen(!open)
 		}
 		setOpen(!open)
