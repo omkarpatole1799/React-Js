@@ -10,8 +10,12 @@ function Cart2UI(props) {
 	const [checkout, setCheckout] = useState(false)
 
 	const cartItems = useSelector(state => state.cartItems)
-
-	const totalAmount = useSelector(state => state.totalAmount)
+	
+	const totalAmount = cartItems.map((item) => {
+		return item.quantity * item.price
+	}).reduce((cur, el) => {
+		return cur + el
+	},0)
 	
 	const checkOutFormHandler = () => {
 		setCheckout(true)
@@ -104,7 +108,7 @@ function Cart2UI(props) {
 						<div className="flex justify-between p-4">
 							<span className="font-semibold">Subtotal</span>
 							<span className="font-bold text-lg">
-								₹ {totalAmount}
+								₹ {totalAmount.toFixed(2)}
 							</span>
 						</div>
 						<hr />

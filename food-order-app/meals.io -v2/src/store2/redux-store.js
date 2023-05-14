@@ -2,7 +2,6 @@ import { createStore } from 'redux'
 
 const initialCartState = {
     cartItems: [],
-    totalAmount: 0
 }
 
 const cartReducer = (state = initialCartState, action) => {
@@ -27,15 +26,9 @@ const cartReducer = (state = initialCartState, action) => {
             }
             cartItem = state.cartItems.concat(newItem)
         }
-
-        const totalAmt1 = state.cartItems.map((item) => {
-            return item.price * item.quantity
-        }).reduce((cur, el) => {
-            return cur + el
-        }, 0)
+        
         return {
             cartItems: cartItem,
-            totalAmount: totalAmt1
         }
     }
 
@@ -55,15 +48,9 @@ const cartReducer = (state = initialCartState, action) => {
             cartItem = [...state.cartItems]
             cartItem[removedItemIndex] = updatedItem
         }
-        const totalAmt = state.cartItems.map((item) => {
-            return item.price * item.quantity
-        }).reduce((cur, el) => {
-            return cur + el
-        }, 0)
         
         return {
             cartItems: cartItem,
-            totalAmount: totalAmt
         }
     }
     return state
