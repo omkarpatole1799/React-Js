@@ -1,4 +1,4 @@
-Food Order App
+**Food Order App**
 
 ![image](https://github.com/omkarpatole1799/React-Js/assets/56589966/6eae2c3c-4fd4-418b-a2f1-80aa34c620d6)
 
