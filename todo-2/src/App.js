@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import './App.css'
 import Navbar from './Components/Navbar'
 import TaskInputForm from './Components/TaskInputForm'
 import TaskList from './Components/TaskList'

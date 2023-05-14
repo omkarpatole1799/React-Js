@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import './App.css';
 import TaskInput from './Components/Task Input/TaskInput';
 import TaskList from './Components/Task List/TaskList';
 
