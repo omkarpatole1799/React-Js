@@ -1,15 +1,21 @@
-import React, { useContext } from "react"
+import store from '../../store2/redux-store'
+import React from "react"
 import Button from "../UI/Button/Button"
-import CartContext from "../../store/cart-context"
 
+// import { useDispatch } from 'react-redux'
+// import { cartActions } from "../../store2/redux-store"
 function CartItemAddRemoveBtn(props) {
-	const cartCtx = useContext(CartContext)
+	
+	// const dispatch = useDispatch()
 
 	const onAddItemHandler = (item) => {
-		cartCtx.addItem({ ...item, quantity: 1 })
-	}
+		store.dispatch({type: 'addItem', value: item})
+		// dispatch(cartActions.addItem(item))
+	}	
+
 	const onRemoveItemHandler = (id) => {
-		cartCtx.removeItem(id)
+		store.dispatch({type: 'removeItem', id: id})
+		// dispatch(cartActions.removeItem(id))
 	}
 
 	return (

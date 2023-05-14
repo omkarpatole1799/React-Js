@@ -1,20 +1,18 @@
-import React, { useContext, useState } from "react"
+import React, { useState } from "react"
 import DOM from "react-dom"
-import CartContext from "../../store/cart-context"
-import CartItemAddRemoveBtn from "./CartItemAddRemoveBtn"
 import emptyCart from "../../assets/images/empty-cart.png"
 import CheckoutForm from "./CheckoutForm"
+import CartItemAddRemoveBtn from "./CartItemAddRemoveBtn"
+
+import { useSelector } from 'react-redux'
 
 function Cart2UI(props) {
 	const [checkout, setCheckout] = useState(false)
-	const cartCtx = useContext(CartContext)
-	const totalAmount = cartCtx.totalAmount
 
-	// get items which are added in cart
-	const filteredItems = cartCtx.items.filter((item) => {
-		return item.quantity > 0
-	})
+	const cartItems = useSelector(state => state.cartItems)
 
+	const totalAmount = useSelector(state => state.totalAmount)
+	
 	const checkOutFormHandler = () => {
 		setCheckout(true)
 	}
@@ -26,7 +24,7 @@ function Cart2UI(props) {
 			method: 'POST',
 			body: JSON.stringify({
 				user: userData,
-				cartItems: filteredItems,
+				cartItems: cartItems,
 			}),
 			headers: {
 				"Content-type": "application/json",
@@ -46,7 +44,7 @@ function Cart2UI(props) {
 					</div>
 					<div className="me-3 ">
 						<p className="absolute right-4 z-10 top-3 bg-[#111827] text-[#D1D7DC] rounded-2xl ps-1 pe-1 text-xs">
-							{filteredItems.length}
+							{cartItems.length}
 						</p>
 						<button className=" p-2 rounded-2xl bg-[#F8FAFC] drop-shadow-xl">
 							<i className="fa-solid fa-cart-shopping"></i>
@@ -54,7 +52,7 @@ function Cart2UI(props) {
 					</div>
 				</div>
 				<div className="overflow-y-scroll p-3 h-[25rem]">
-					{filteredItems.length === 0 && (
+					{cartItems.length === 0 && (
 						<div className="flex flex-col items-center justify-center mt-20">
 							<img className="w-40 h-auto" src={emptyCart} alt="" />
 							<p className="pt-5 text-lg font-semibold">Woops!!! Empty Cart</p>
@@ -66,8 +64,8 @@ function Cart2UI(props) {
 							</button>
 						</div>
 					)}
-					{filteredItems.length > 0 &&
-						filteredItems.map((item) => {
+					{cartItems.length > 0 &&
+						cartItems.map((item) => {
 							return (
 								<div key={item.id}>
 									<div className="bg-[#F8FAFC] rounded-3xl mt-4 flex h-24 pe-4 drop-shadow-xl">
@@ -88,7 +86,7 @@ function Cart2UI(props) {
 											</p>
 											<div className="flex items-center justify-between ">
 												<span className="font-semibold text-md">
-													₹ {item.price.toFixed(2)}
+													₹ 100
 												</span>
 												<button className="">
 													<CartItemAddRemoveBtn item={item} />
@@ -101,12 +99,12 @@ function Cart2UI(props) {
 						})}
 				</div>
 
-				{filteredItems.length > 0 && (
+				{cartItems.length > 0 && (
 					<div className="absolute bottom-10 w-full pe-4">
 						<div className="flex justify-between p-4">
 							<span className="font-semibold">Subtotal</span>
 							<span className="font-bold text-lg">
-								₹ {totalAmount.toFixed(2)}
+								₹ {totalAmount}
 							</span>
 						</div>
 						<hr />
@@ -118,8 +116,8 @@ function Cart2UI(props) {
 						<div className="flex justify-between p-4">
 							<span className="font-semibold">Bag Total</span>
 							<span className="font-bold text-lg">
-								({filteredItems.length} item ) ₹
-								{(totalAmount + 36.33).toFixed(2)}
+								({cartItems.length} item ) ₹
+								{(totalAmount + 36.33)}
 							</span>
 						</div>
 

@@ -1,11 +1,9 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import MealsList from "./MealsList"
-import cartContext from "../../store/cart-context"
-import useHttp from "../../store/use-http"
+import useHttp from "../../store2/use-http"
 import Loading from "../UI/Loading"
 
 function Meals() {
-	const cartCtx = useContext(cartContext)
 	const [mealsData, setMealsData] = useState([])
 
 	const { fetchData, error, loading } = useHttp()

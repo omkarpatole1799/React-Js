@@ -92,7 +92,6 @@ const counterReducer = (state = defaultState, action) => {
             showCounter: !state.showCounter
         }
     }
-
     return state
 }
 

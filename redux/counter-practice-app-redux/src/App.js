@@ -13,7 +13,6 @@ function App() {
       {!isLoggedIn && <Auth />}
       {isLoggedIn && <UserProfile />}
       <Counter />
-      
     </>
   );
 }

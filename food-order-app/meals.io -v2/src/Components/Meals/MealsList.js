@@ -7,10 +7,7 @@ function MealsList(props) {
 		<>
 			{props.meals.map((item) => {
 				return (
-					<div
-						key={item.id}
-						className="bg-[#F8FAFC] m-2 sm:m-2 md:m-2 lg:m-5 rounded-3xl drop-shadow-2xl  md:hover:border-0 md:hover:drop-shadow-2xl md:hover:bg-[#111827] md:hover:text-[#D1D7DC] duration-500"
-					>
+					<div key={item.id} className="bg-[#F8FAFC] m-2 sm:m-2 md:m-2 lg:m-5 rounded-3xl drop-shadow-2xl  md:hover:border-0 md:hover:drop-shadow-2xl md:hover:bg-[#111827] md:hover:text-[#D1D7DC] duration-500">
 						<div className="">
 							<img
 								src={item.image}
