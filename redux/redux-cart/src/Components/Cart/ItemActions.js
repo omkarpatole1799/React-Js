@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { cartItemAction } from "../Store/cart-items-slice";
-import { Button } from "../UI/Button";
+import { Button } from "../UI/Button/Button";
 const ItemActions = (props) => {
 
     const dispatch = useDispatch()
@@ -13,9 +13,9 @@ const ItemActions = (props) => {
     }
 
     return <>
-        <Button onClick={addItemhandler.bind(null,props.item)}>+</Button>
-        <span>x {props.quantity }</span>
-        <Button onClick={removeItemHandler.bind(null,props.item)}>-</Button>
+        <Button onClick={addItemhandler.bind(null, props.item)}>+</Button>
+        <span>x {props.quantity}</span>
+        <Button onClick={removeItemHandler.bind(null, props.item)}>-</Button>
     </>
 }
 export default ItemActions

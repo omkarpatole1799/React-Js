@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { cartActions } from '../Store/cartUI-slice'
-import { Button } from '../UI/Button'
+import { Button } from '../UI/Button/Button'
 const Navbar = () => {
-    const totalCartItems = useSelector(state=> state.cartItems.totalCartItems)
+    const totalCartItems = useSelector(state => state.cartItems.totalCartItems)
     const dispatch = useDispatch()
 
     const toggleCartHandler = () => {
