@@ -1,9 +1,11 @@
-import { useDispatch } from 'react-redux'
-import { cartItemAction } from '../Store/cart-items-slice'
-import { Button } from '../UI/Button'
+import { useDispatch } from "react-redux";
+import { cartItemAction } from "../Store/cart-items-slice";
+import { Button } from "../UI/Button";
 const ItemActions = (props) => {
+
     const dispatch = useDispatch()
-    const addItemHandler = (item) => {
+
+    const addItemhandler = (item) => {
         dispatch(cartItemAction.addItem(item))
     }
     const removeItemHandler = (item) => {
@@ -11,11 +13,9 @@ const ItemActions = (props) => {
     }
 
     return <>
-        <div className=''>
-            <Button onClick={addItemHandler.bind(null, props.item)} className='font-bold text-3xl'>+</Button>
-            <Button className='font-bold text-3xl'>x {props.quantity}</Button>
-            <Button onClick={removeItemHandler.bind(null, props.item)} className='font-bold text-3xl'>-</Button>
-        </div>
+        <Button onClick={addItemhandler.bind(null,props.item)}>+</Button>
+        <span>x {props.quantity }</span>
+        <Button onClick={removeItemHandler.bind(null,props.item)}>-</Button>
     </>
 }
 export default ItemActions

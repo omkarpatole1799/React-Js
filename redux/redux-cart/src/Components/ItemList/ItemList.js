@@ -1,31 +1,26 @@
-import React from 'react'
-import ItemActions from '../Cart/ItemActions'
+import Item from "./Item"
 const DUMMY_DATA = [
     {
-        id: 'i1',
+        itemId: 'i1',
         itemName: 'Item1',
-        itemPrice: 450
+        itemPrice: 450,
+        itemQuantity: 0
     },
     {
-        id: 'i2',
-        itemName: 'Item1',
-        itemPrice: 350
+        itemId: 'i2',
+        itemName: 'Item2',
+        itemPrice: 350,
+        itemQuantity: 0
     }
 ]
 
 function ItemList() {
     return (
-        <>
-            {
-                DUMMY_DATA.map((item) => {
-                    return <div className='rounded-2xl p-4 m-2 bg-blue-300'>
-                        <p>{item.itemName}</p>
-                        <p>price $ {item.itemPrice}</p>
-                        <ItemActions item={item}></ItemActions>
-                    </div>
-                })
-            }
-        </>
+        <ul>
+            {DUMMY_DATA.map((item) => {
+                return <Item key={item.itemId} item={item} />
+            })}
+        </ul>
     )
 }
 
