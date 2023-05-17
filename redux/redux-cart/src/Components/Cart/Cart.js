@@ -7,8 +7,9 @@ const Cart = () => {
 
     return (
         <Card className='p-1'>
-            {cartItems.map((item) => {
-                return <Card className='bg-blue-100 p-2'>
+            {cartItems.length === 0 && <p className=''>Empty Cart</p>}
+            {cartItems && cartItems.map((item) => {
+                return <Card key={item.itemId} className='bg-blue-100 p-2'>
                     <div className='flex justify-between' key={item.itemId}>
                         <div>
                             <h3 className='text-xl font-bold'>{item.itemName}</h3>

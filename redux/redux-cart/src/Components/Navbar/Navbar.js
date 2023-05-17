@@ -1,13 +1,13 @@
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { cartActions } from '../Store/cartUI-slice'
+import { UIActions} from '../Store/UI-slice'
 import { Button } from '../UI/Button/Button'
 const Navbar = () => {
     const totalCartItems = useSelector(state => state.cartItems.totalCartItems)
     const dispatch = useDispatch()
 
     const toggleCartHandler = () => {
-        dispatch(cartActions.toggleCart())
+        dispatch(UIActions.toggleCart())
     }
     return <>
         <div className='bg-purple-500 flex justify-between '>
