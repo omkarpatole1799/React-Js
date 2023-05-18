@@ -1,9 +1,4 @@
-import React from 'react'
-
 const Notification = (props) => {
-
-    console.log(props.data)
-
     let notificationClasses
 
     if (props.data.status === 'error') {
@@ -17,8 +12,8 @@ const Notification = (props) => {
 
     return <>
         <div className= {notificationClasses}>
-            <span>{props.data.status}</span>
             <span>{props.data.message}</span>
+            <span>{props.data.description}</span>
         </div>
     </>
 }
