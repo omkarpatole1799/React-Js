@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 const DUMMY_DATA = [
 	{
 		id: "e1",
@@ -12,10 +12,11 @@ const DUMMY_DATA = [
 ];
 
 function Events() {
+	const data = useLoaderData();
 	return (
 		<>
 			<ul>
-				{DUMMY_DATA.map((event) => {
+				{data.map((event) => {
 					return (
 						<Link
 							to={event.id}
