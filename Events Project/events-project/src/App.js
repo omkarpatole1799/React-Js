@@ -23,7 +23,7 @@ const router = createBrowserRouter([
           <Suspense fallback={<h4>Loading...</h4>}>
             <Home />
           </Suspense>
-        ),``
+        ),
       },
 
       {
@@ -35,7 +35,6 @@ const router = createBrowserRouter([
             element: <Events />,
             loader: async () => {
               const res = await fetch('https://localhost:8080')
-
               if (!res.ok) {
                 console.log('error in api')
               } else {
