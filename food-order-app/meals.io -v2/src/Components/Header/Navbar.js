@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 
 const Navbar = (props) => {
-	let [open, setOpen] = useState(false)
+	const [open, setOpen] = useState(false)
 
 	const navOpenHandler = () => {
 		if (props.showCart) {

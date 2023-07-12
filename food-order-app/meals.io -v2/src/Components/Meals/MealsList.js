@@ -1,6 +1,5 @@
 import React from "react"
 import CartItemAddRemoveBtn from "../Cart/CartItemAddRemoveBtn"
-import "./MealsList.css"
 function MealsList(props) {
 
 	return (
