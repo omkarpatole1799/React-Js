@@ -1,4 +1,6 @@
-import React, { useState } from "react"
+import { NavLink } from "react-router-dom"
+import { useState } from "react"
+
 
 const Navbar = (props) => {
 	const [open, setOpen] = useState(false)
@@ -22,20 +24,19 @@ const Navbar = (props) => {
 
 					<ul className={`absolute md:static right-0 top-14 ${!open ? "translate-x-full" : "translate-x-0"} flex flex-col bg-white z-20 md:z-auto md:bg-inherit w-full h-auto p-3 md:flex-row transition-all duration-400 ease-in-out`}>
 						<li className="md:ps-2 ms-5 mb-2 w-full">
-							<a>Home</a>
+							<NavLink to='/'>Home</NavLink>
 						</li>
 						<li className="md:ps-2 ms-5 mb-2">
-							<a>About</a>
+							<NavLink to='/about'>About</NavLink>
 						</li>
 						<li className="md:ps-2 ms-5 mb-2">
-							<a>Order</a>
+							<NavLink to='/meals'>Meals</NavLink>
 						</li>
-						<li className="md:ps-2 ms-5 mb-2">
-							<a>Contact</a>
-						</li>
-						<button onClick={props.onClick} className="bg-[#111827] text-[#D1D7DC] ps-3 pe-3 pt-2 pb-2 rounded-3xl">
-							Open Cart
-						</button>
+						<NavLink to='/cart'>
+							<button onClick={props.onClick} className="bg-[#111827] text-[#D1D7DC] ps-3 pe-3 pt-2 pb-2 rounded-3xl">
+								Open Cart
+							</button>
+						</NavLink>
 					</ul>
 				</div>
 			</nav>

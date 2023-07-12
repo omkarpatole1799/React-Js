@@ -1,28 +1,26 @@
-import { useState } from "react";
-import Navbar from "./Components/Header/Navbar";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import Home from "./Components/Home";
+import Root from "./Components/Root";
+import About from "./Components/About";
 import Meals from "./Components/Meals/Meals";
-import Footer from "./Components/UI/Footer/Footer";
-import Cart2 from "./Components/Cart/Cart2";
+import Cart from "./Components/Cart/Cart";
 
 function App() {
-  const [showCart, setShowCart] = useState(false);
-  const cartOpenHandler = () => {
-    setShowCart(true);
-  };
-  const cartCloseHandler = () => {
-    setShowCart(false);
-  };
-  return (
-    <>
-      <Cart2 showCart={showCart} onCloseCart={cartCloseHandler} />
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Root />,
+      children: [
+        { path: "/", element: <Home /> },
+        { path: "/about", element: <About /> },
+        { path: "/meals", element: <Meals /> },
+        { path: "/cart", element: <Cart /> }
+      ],
+    },
+  ]);
 
-      <Navbar showCart={showCart} onClick={cartOpenHandler} />
-
-      <Meals />
-
-      <Footer />
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

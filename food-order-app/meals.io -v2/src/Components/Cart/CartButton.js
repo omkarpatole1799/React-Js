@@ -4,7 +4,7 @@ import CartContext from "../../store/cart-context"
 import './CartButton.css'
 function CartButton(props) {
 	const cartCxt = useContext(CartContext)
-	
+
 	const totalCartItem = cartCxt.items.reduce((cur, item) => {
 		return cur + item.quantity
 	}, 0)
