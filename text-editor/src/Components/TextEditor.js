@@ -4,25 +4,31 @@ import React, { useState } from 'react'
 function TextEditor() {
     const [text, setText] = useState('')
     const totalChar = () => {
-        let char = 0
-        return char
+        let charCount = 0
+        let charArr = text.split("")        
+        for (let char of charArr){
+            if(char !== " "){
+                charCount = charCount + 1
+            }
+        }
+        return charCount
     }
     const totalWords = () => {
         let words = 0
-        let wordsArr = text.split(' ').filter(e => " ")
-        console.log(wordsArr);
-        
-        for (let word of wordsArr){
-            if(word !== "") {
+        let wordsArr = text.split(' ')        
+        for (let word of wordsArr) {
+            if (word !== "") {
                 words = words + 1
             }
         }
         return words
     }
-    const timeRead = 0
+    const timeRead = () => {
+        let time = 0
+        return time
+    }
     const textChangeHandler = (e) => {
-        let value = (e.target.value)
-        setText(value)        
+        setText(e.target.value)
     }
     const options = [
         { title: 'Bold', id: 1 },
@@ -32,9 +38,7 @@ function TextEditor() {
     return (
         <div>
             {options.map(el => {
-                return <>
-                    <button key={el.id}>{el.title} </button>
-                </>
+                return <button key={el.id}>{el.title} </button>
             })}
             <br></br>
             <br></br>
@@ -42,7 +46,7 @@ function TextEditor() {
             <textarea cols="50" rows="5" onChange={textChangeHandler}></textarea>
             <p>Total char: {totalChar()}</p>
             <p>Total words: {totalWords()}</p>
-            <p>Time read: {timeRead}</p>
+            <p>Time read: {timeRead()}</p>
         </div>
     )
 }
