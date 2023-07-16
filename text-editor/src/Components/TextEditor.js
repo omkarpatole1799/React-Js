@@ -5,35 +5,38 @@ function TextEditor() {
     const [text, setText] = useState('')
     const [wordCount, setWordCount] = useState(0)
     const [timeRead, setTimeRead] = useState(0)
-    const textChangeHandler = (e) =>{
+    
+    const textChangeHandler = (e) => {
         setText(e.target.value)
-        textOperations()
     }
-    
-    const textOperations = () => {
-        let wordCount = 0
-        const wordArr = text.split(" ")
-        for (let word of wordArr){
-            if(word !== ""){
-                wordCount = wordCount + 1
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            let wordCount = 0
+            const wordArr = text.split(" ")
+            for (let word of wordArr) {
+                if (word !== "") {
+                    wordCount = wordCount + 1
+                }
             }
-        }
-        let readTime = Math.ceil((wordCount / 200 ))
-        setTimeRead(readTime)         
-        setWordCount(wordCount)
-    }
-    
+            let readTime = Math.ceil((wordCount / 200))
+            setTimeRead(readTime)
+            setWordCount(wordCount)
+        }, 500)
+
+        return () => clearTimeout(timer)
+    }, [text])
+
     const options = [
         { title: 'Bold', id: 1 },
         { title: 'Italic', id: 2 },
         { title: 'Underline', id: 3 }
     ]
-    console.log(timeRead);
-    
+
     // time read html
-    const timeReadHtml = timeRead  === 0 ? "0 Min" 
-                        :timeRead <= 1 ? "Less than a min" 
-                        :`${timeRead} min`
+    const timeReadHtml = timeRead === 0 ? "0 Min"
+        : timeRead <= 1 ? "Less than a min"
+            : `${timeRead} min`
 
     return (
         <div>
