@@ -1,55 +1,37 @@
-import React, { useState, useEffect } from 'react'
-
-
+import React, { useRef, useState, useEffect } from 'react'
+import './text-editor.css'
 function TextEditor() {
-    const [text, setText] = useState('')
-    const [wordCount, setWordCount] = useState(0)
-    const [timeRead, setTimeRead] = useState(0)
-    
-    const textChangeHandler = (e) => {
-        setText(e.target.value)
-    }
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            let wordCount = 0
-            const wordArr = text.split(" ")
-            for (let word of wordArr) {
-                if (word !== "") {
-                    wordCount = wordCount + 1
-                }
-            }
-            let readTime = Math.ceil((wordCount / 200))
-            setTimeRead(readTime)
-            setWordCount(wordCount)
-        }, 500)
-
-        return () => clearTimeout(timer)
-    }, [text])
-
     const options = [
         { title: 'Bold', id: 1 },
         { title: 'Italic', id: 2 },
         { title: 'Underline', id: 3 }
     ]
 
-    // time read html
-    const timeReadHtml = timeRead === 0 ? "0 Min"
-        : timeRead <= 1 ? "Less than a min"
-            : `${timeRead} min`
+    const actionButtonHandler = (action) =>{
+
+        
+        if(action === "Bold"){
+            console.log("bold")
+        }
+    }
+    let inputRef = useRef()
+    const changeHandler = (e) =>{
+        console.log(inputRef.current.value)
+
+    }
+    const selectHandler = () =>{
+        let exactText = window.getSelection().toString()
+        console.log(exactText)
+    }
 
     return (
         <div>
             {options.map(el => {
-                return <button key={el.id}>{el.title} </button>
+                return <button onClick={actionButtonHandler.bind(null, el.title)} key={el.id}>{el.title} </button>
             })}
-
             <br></br>
             <br></br>
-
-            <textarea cols="50" rows="5" onChange={(textChangeHandler)}></textarea>
-            <p>Total words: {wordCount}</p>
-            <p>Time read: {timeReadHtml}</p>
+            <textarea onMouseUp={selectHandler}  ref={inputRef} onChange={changeHandler} cols="50" rows="5" id='text-area'></textarea>
         </div>
     )
 }

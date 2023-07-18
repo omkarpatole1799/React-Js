@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import MealsList from "./MealsList";
 import useHttp from "../../store2/Hooks/use-http";
-
+import Footer from "../UI/Footer/Footer";
 function Meals() {
   const [mealsData, setMealsData] = useState([]);
 
@@ -35,6 +35,7 @@ function Meals() {
       <div className={classNames}>
         <MealsList meals={mealsData} />
       </div>
+      <Footer />
     </>
   );
 }
