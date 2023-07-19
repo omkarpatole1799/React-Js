@@ -3,7 +3,6 @@ import MealsList from "./MealsList";
 import Footer from "../UI/Footer/Footer";
 function Meals() {
   const [mealsData, setMealsData] = useState([]);
-  const [data, setData] = useState([]);
   const transformData = (data) => {
     let mealData = [];
     for (const key in data) {
@@ -17,7 +16,6 @@ function Meals() {
       });
     }
     setMealsData(mealData);
-    setData(mealsData);
   };
 
   const fetchData = async () => {
@@ -38,7 +36,7 @@ function Meals() {
   return (
     <>
       <div className={classNames}>
-        <MealsList meals={data} />
+        <MealsList meals={mealsData} />
       </div>
       <Footer />
     </>
