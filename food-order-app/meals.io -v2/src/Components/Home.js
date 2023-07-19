@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import React from "react";
 import Footer from "./UI/Footer/Footer";
 
@@ -12,9 +12,9 @@ function Home() {
         <p className="text-xs w-[10rem] pb-4">
           Delivered fastly to your door step!
         </p>
-        <NavLink to='/meals'>
+        <Link to='/meals'>
           <Button >Order now!</Button>
-        </NavLink>
+        </Link>
 
       </div>
       <img

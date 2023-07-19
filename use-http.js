@@ -1,6 +1,8 @@
 import { useState } from "react";
 
 function useHttp() {
+  console.log("here");
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 

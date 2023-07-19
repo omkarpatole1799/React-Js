@@ -1,19 +1,13 @@
 import store from '../../store2/redux-store'
 import React from "react"
 import Button from "../UI/Button/Button"
-
 function CartItemAddRemoveBtn(props) {
-	
 	const onAddItemHandler = (item) => {
 		store.dispatch({type: 'addItem', value: item})
-		// dispatch(cartActions.addItem(item))
 	}	
-
 	const onRemoveItemHandler = (id) => {
 		store.dispatch({type: 'removeItem', id: id})
-		// dispatch(cartActions.removeItem(id))
-	}
-
+	}	
 	return (
 		<>
 			{props.item.quantity === 0 && (
