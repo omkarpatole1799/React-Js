@@ -5,13 +5,13 @@ function logForm() {
     <div>
         <form>
             <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <Link class="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Dropdown
-            </a>
+            </Link>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><Link class="dropdown-item" to="#">Action</Link></li>
+                    <li><Link class="dropdown-item" to="#">Another action</Link></li>
+                    <li><Link class="dropdown-item" to="#">Something else here</Link></li>
                 </ul>
             </li>
             <div className="mb-3">
