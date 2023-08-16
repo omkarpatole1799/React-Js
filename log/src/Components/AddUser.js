@@ -103,19 +103,21 @@ function AddUser() {
         });
         let data = await response.json();
         console.log(data.message);
-        if (data.message === "User already exsist") {
+        if (data.message === "Email already exsist") {
             setAlreadyExsist(true);
+        } else if (data.message === "User Created successfully") {
+            alert(data.message);
         }
     }
 
     return (
-        <div>
+        <div className="container d-flex justify-content-center align-items-center">
             <form
                 method="POST"
                 action="/admin/add-user"
                 encType="multipart/form-data"
             >
-                <div className="form-group">
+                <div className="form-group p-2 ">
                     <label htmlFor="exampleInputEmail1">Email address</label>
                     <input
                         type="text"
@@ -130,7 +132,7 @@ function AddUser() {
                         </span>
                     )}
                 </div>
-                <div className="form-group">
+                <div className="form-group p-2">
                     <label htmlFor="password">Password</label>
                     <input
                         type="text"
@@ -141,7 +143,7 @@ function AddUser() {
                     />
                     {!password.isValid.value && `${password.isValid.message}`}
                 </div>
-                <div className="form-group">
+                <div className="form-group p-2">
                     <label htmlFor="profileImage">Profile</label>
                     <input
                         type="file"
@@ -153,27 +155,28 @@ function AddUser() {
                     {!profileImage.isValid.value &&
                         `${profileImage.isValid.message}`}
                 </div>
-                <div>
+                <div className="form-group p-2">
                     <label>Select Type</label>
                     <select
                         className="form-select"
                         onChange={userTypeChangeHandler}
                     >
-                        <option value="">---Select type---</option>
+                        <option value="">--- Select user type ---</option>
                         <option value="admin">Admin</option>
                         <option value="user">User</option>
                     </select>
                 </div>
-                <button
-                    onClick={submitFormHandler}
-                    type="submit"
-                    className="btn btn-primary"
-                >
-                    Submit
-                </button>
+                <div className="form-group p-2 d-flex justify-content-center">
+                    <button
+                        onClick={submitFormHandler}
+                        type="submit"
+                        className="btn btn-success"
+                    >
+                        Submit
+                    </button>
+                </div>
             </form>
         </div>
     );
 }
-
 export default AddUser;

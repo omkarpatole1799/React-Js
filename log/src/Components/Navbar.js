@@ -25,12 +25,13 @@ function Navbar() {
                     >
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <NavLink
-                                    className="nav-link"
-                                    aria-current="page"
-                                    to="/admin/add-user"
-                                >
-                                    Admin
+                                <NavLink className="nav-link" to="/dashboard">
+                                    Dashboard
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="/login">
+                                    Login
                                 </NavLink>
                             </li>
                         </ul>
