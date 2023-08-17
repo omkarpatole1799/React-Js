@@ -1,18 +1,43 @@
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 function Login() {
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const [emailError, setEmailError] = useState(false);
+    const [passwordError, setPasswordError] = useState(false);
+
     function emailChangeHandler(e) {
         setEmail(e.target.value);
     }
     function passwordChangeHandler(e) {
         setPassword(e.target.value);
     }
-    function loginButtonHandler(e) {
+    async function loginButtonHandler(e) {
         e.preventDefault();
-        console.log(email, password);
-        return;
+        let res = await fetch("http://localhost:4000/login", {
+            method: "POST",
+            headers: {
+                accept: "application.json",
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+                email,
+                password,
+            }),
+        });
+        let { message } = await res.json();
+        
+        if (message === "Please check your email") {
+            setEmailError(true);
+        }
+        if (message === "Please check your password") {
+            setPasswordError(true);
+        }
+        if (message === "authenticated") {
+            navigate("/dashboard");
+        }
     }
     return (
         <>
@@ -30,6 +55,7 @@ function Login() {
                             name="email"
                             onChange={emailChangeHandler}
                         />
+                        {emailError && <span>Please check your email</span>}
                     </div>
                     <div className="mb-3">
                         <label htmlFor="password" className="form-label">
@@ -42,6 +68,9 @@ function Login() {
                             name="password"
                             onChange={passwordChangeHandler}
                         />
+                        {passwordError && (
+                            <span>Please check your password</span>
+                        )}
                     </div>
                     {/* <div className="form-group mb-3">
                         <label>Select Type</label>
