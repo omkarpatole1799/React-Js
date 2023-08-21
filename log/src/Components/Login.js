@@ -3,47 +3,40 @@ import { useNavigate } from "react-router-dom";
 function Login() {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
-    const [emailError, setEmailError] = useState(false);
-    const [passwordError, setPasswordError] = useState(false);
+    const [pass, setPass] = useState("");
 
     function emailChangeHandler(e) {
         setEmail(e.target.value);
     }
     function passwordChangeHandler(e) {
-        setPassword(e.target.value);
+        setPass(e.target.value);
     }
-    async function loginButtonHandler(e) {
+    function loginButtonHandler(e) {
         e.preventDefault();
-        let res = await fetch("http://localhost:4000/login", {
+        if (email !== "" && pass !== "") {
+            loginRequestHandler();
+        }
+    }
+    const loginRequestHandler = async () => {
+        const res = await fetch("http://localhost:4000/login", {
             method: "POST",
+            mode: "cors",
             headers: {
-                accept: "application.json",
-                "Content-type": "application/json",
+                "Content-Type": "application/json",
             },
             body: JSON.stringify({
                 email,
-                password,
+                pass,
             }),
         });
-        let { message } = await res.json();
-        
-        if (message === "Please check your email") {
-            setEmailError(true);
-        }
-        if (message === "Please check your password") {
-            setPasswordError(true);
-        }
-        if (message === "authenticated") {
-            navigate("/dashboard");
-        }
-    }
+        const data = await res.json();
+        console.log(data);
+    };
     return (
         <>
             <div className="container d-flex flex-column justify-content-center align-items-center">
                 <h3 className="mt-3 mb-3">Login</h3>
-                <form>
+                <form method="POST" encType="application/json" action="/login">
                     <div className="mb-3">
                         <label htmlFor="email" className="form-label">
                             Email
@@ -55,7 +48,6 @@ function Login() {
                             name="email"
                             onChange={emailChangeHandler}
                         />
-                        {emailError && <span>Please check your email</span>}
                     </div>
                     <div className="mb-3">
                         <label htmlFor="password" className="form-label">
@@ -68,21 +60,7 @@ function Login() {
                             name="password"
                             onChange={passwordChangeHandler}
                         />
-                        {passwordError && (
-                            <span>Please check your password</span>
-                        )}
                     </div>
-                    {/* <div className="form-group mb-3">
-                        <label>Select Type</label>
-                        <select
-                            className="form-select"
-                            
-                        >
-                            <option value="">--- Select user type ---</option>
-                            <option value="admin">Admin</option>
-                            <option value="user">User</option>
-                        </select>
-                    </div> */}
                     <div className="d-flex justify-content-center">
                         <button
                             type="submit"
