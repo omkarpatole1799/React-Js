@@ -2,8 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 function Login() {
     const navigate = useNavigate();
+
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
+
+    const [emailWrong, setEmailWrong] = useState(false);
+    const [passWrong, setPassWrong] = useState(false);
 
     function emailChangeHandler(e) {
         setEmail(e.target.value);
@@ -29,8 +33,21 @@ function Login() {
                 pass,
             }),
         });
-        const data = await res.json();
-        console.log(data);
+        const { message, tocken, userId } = await res.json();
+
+        if (message === "authenticated") {
+            setEmailWrong(false);
+            setPassWrong(false);
+            localStorage.setItem("tocken", tocken);
+            localStorage.setItem("userId", userId);
+            navigate("/dashboard", { state: { userId } });
+        }
+        if (message === "Incorret Password") {
+            setPassWrong(true);
+        }
+        if (message === "Incorrect Email") {
+            setEmailWrong(true);
+        }
     };
     return (
         <>
@@ -48,6 +65,7 @@ function Login() {
                             name="email"
                             onChange={emailChangeHandler}
                         />
+                        {emailWrong && <span>Incorrect Email</span>}
                     </div>
                     <div className="mb-3">
                         <label htmlFor="password" className="form-label">
@@ -60,6 +78,7 @@ function Login() {
                             name="password"
                             onChange={passwordChangeHandler}
                         />
+                        {passWrong && <span>Incorret Password</span>}
                     </div>
                     <div className="d-flex justify-content-center">
                         <button

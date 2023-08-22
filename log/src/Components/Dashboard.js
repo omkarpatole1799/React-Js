@@ -1,12 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 // component imports
 import Button from "./UI/Button";
 
 function Dashboard() {
+    const location = useLocation();
     return (
         <div className="container mt-5">
-            <h3 className="text-center">Dashboard, welcome "usernamehere"</h3>
+            <h3 className="text-center">Dashboard, welcome</h3>
             <div className="d-flex ">
                 <Button className="btn btn-success m-5">
                     <Link className="nav-link" to="/add-user">

@@ -7,9 +7,14 @@ import Button from "../UI/Button";
 
 function AddUser() {
     const [emailAlreadyExsist, setEmailAlreadyExsist] = useState(false);
+
+    const [userName, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
 
+    function userNameChangeHandler(e) {
+        setUserName(e.target.value);
+    }
     function emailChangeHandler(e) {
         setEmail(e.target.value);
     }
@@ -33,7 +38,8 @@ function AddUser() {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                email,
+                user_name: userName,
+                user_email: email,
                 pass,
             }),
         });
@@ -55,6 +61,17 @@ function AddUser() {
                     action="/add-user"
                     encType="application/json"
                 >
+                    <div className="form-group p-2">
+                        <label htmlFor="userName">User Name</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="userName"
+                            name="userName"
+                            onChange={userNameChangeHandler}
+                        />
+                    </div>
+
                     <div className="form-group p-2">
                         <label htmlFor="emailId">Email ID</label>
                         <input
