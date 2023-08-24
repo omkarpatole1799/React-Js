@@ -1,11 +1,15 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+
+// css file import
+import classes from "./navbar.module.css";
+
 function Navbar() {
     return (
         <div>
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
                 <div className="container-fluid">
-                    <NavLink className="navbar-brand" to="#">
+                    <NavLink className="navbar-brand" to="/">
                         logger.io
                     </NavLink>
                     <button
@@ -30,7 +34,14 @@ function Navbar() {
                                 </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link" to="/login">Login</NavLink>
+                                <NavLink className="nav-link" to="/login">
+                                    Login
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink className="nav-link" to="/add-user">
+                                    Signup
+                                </NavLink>
                             </li>
                         </ul>
                     </div>

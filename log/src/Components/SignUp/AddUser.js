@@ -3,17 +3,25 @@ import { useState } from "react";
 // import useInput from "../Hooks/use-input";
 
 // components import
-import Button from "../UI/Button";
+import Button from "../UI/Button/Button";
 
 function AddUser() {
     const [emailAlreadyExsist, setEmailAlreadyExsist] = useState(false);
 
-    const [userName, setUserName] = useState("");
+    const [user_name, setuser_name] = useState("");
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
 
-    function userNameChangeHandler(e) {
-        setUserName(e.target.value);
+    const [createSuccess, setCreateSuccess] = useState(false);
+
+    function resetInputs() {
+        setuser_name("");
+        setEmail("");
+        setPass("");
+    }
+
+    function user_nameChangeHandler(e) {
+        setuser_name(e.target.value);
     }
     function emailChangeHandler(e) {
         setEmail(e.target.value);
@@ -38,7 +46,7 @@ function AddUser() {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                user_name: userName,
+                user_name,
                 user_email: email,
                 pass,
             }),
@@ -48,7 +56,11 @@ function AddUser() {
             setEmailAlreadyExsist(true);
         }
         if (message === "User Created successfully") {
-            console.log("User Created successfully");
+            resetInputs();
+            setCreateSuccess(true);
+            setTimeout(() => {
+                setCreateSuccess(false);
+            }, 1500);
         }
     };
 
@@ -62,13 +74,13 @@ function AddUser() {
                     encType="application/json"
                 >
                     <div className="form-group p-2">
-                        <label htmlFor="userName">User Name</label>
+                        <label htmlFor="user_name">User Name</label>
                         <input
                             type="text"
                             className="form-control"
-                            id="userName"
-                            name="userName"
-                            onChange={userNameChangeHandler}
+                            id="user_name"
+                            name="user_name"
+                            onChange={user_nameChangeHandler}
                         />
                     </div>
 
@@ -104,6 +116,11 @@ function AddUser() {
                             Submit
                         </Button>
                     </div>
+                    {createSuccess && (
+                        <div className="alert alert-primary">
+                            User Created Succesfully
+                        </div>
+                    )}
                 </form>
             </div>
         </div>

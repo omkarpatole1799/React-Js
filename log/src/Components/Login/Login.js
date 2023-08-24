@@ -22,10 +22,14 @@ function Login() {
         }
     }
     const loginRequestHandler = async () => {
+        const localStorageTocken = localStorage.getItem("tocken");
+        const localStorageUserId = localStorage.getItem("userId");
+
         const res = await fetch("http://localhost:4000/login", {
             method: "POST",
             mode: "cors",
             headers: {
+                Authorization: "Bearer " + localStorageTocken,
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({

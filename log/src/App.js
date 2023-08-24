@@ -2,11 +2,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // component imports
-import RootComponenet from "./Components/RootComponenet";
-import Login from "./Components/Login";
-import Dashboard from "./Components/Dashboard";
-import AddUser from "./Components/Dashboard/AddUser";
-import AddLog from "./Components/Dashboard/AddLog";
+import RootComponenet from "./Components/Root/RootComponenet";
+import Login from "./Components/Login/Login";
+import Dashboard from "./Components/Dashboard/Dashboard";
+import AddUser from "./Components/SignUp/AddUser";
+import AddLog from "./Components/AddLog/AddLog";
 
 const router = createBrowserRouter([
     {
