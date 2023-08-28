@@ -22,7 +22,7 @@ function Navbar() {
                 { name: "Logout", function: logOutButtonHandler },
             ]);
         }
-    },[]); 
+    }, []);
 
     function loginButtonHandler() {
         getLogin();
@@ -33,13 +33,33 @@ function Navbar() {
         navigate("/login");
     }
     function addLogHandler() {
-        navigate("/add-log");
+        getAddLog();
     }
     function daboardButtonHandler() {
         navigate("/dashboard");
     }
     function attendanceButtonHandler() {
         navigate("/dashboard");
+    }
+
+    async function getAddLog() {
+        const res = await fetch("http://localhost:4000/add-log", {
+            headers: {
+                Authorization:
+                    "Bearer " +
+                    localStorage.getItem("tocken") +
+                    " " +
+                    localStorage.getItem("userId"),
+            },
+        });
+        const { call } = await res.json();
+        if (call === "authorized") {
+            localStorage.clear("tocken");
+            navigate("/add-log");
+        }
+        if (call === "not authorized") {
+            navigate("/login");
+        }
     }
 
     async function getLogin() {
@@ -63,7 +83,11 @@ function Navbar() {
             <div className="col-2 d-flex justify-content-start align-items-start flex-column sidebar">
                 {actionButtons.map((el, i) => {
                     return (
-                        <button className="actionButtons" onClick={el.function}>
+                        <button
+                            key={i}
+                            className="actionButtons"
+                            onClick={el.function}
+                        >
                             {el.name}
                         </button>
                     );

@@ -1,35 +1,63 @@
 import { useState } from "react";
 import Button from "../UI/Button/Button";
 import Navbar from "../Navbar/Navbar";
+
 function AddLog() {
     const [log, setLog] = useState();
     const [logError, setLogError] = useState(false);
+    const [projectTitle, setProjectTitle] = useState();
+    const [projectTitleError, setProjectTitleError] = useState(false);
+
+    const [logStatus, setLogStatus] = useState(false);
 
     const logChangeHandler = (e) => {
         setLog(e.target.value);
     };
 
+    const dropDownChangeHandler = (e) => {
+        setProjectTitle(e.target.value);
+    };
+
     function submitLogHandler(e) {
-        console.log("submitting log");
         e.preventDefault();
-        if (log !== "") {
-            async function fetchData() {
-                const res = await fetch("http://localhost:4000/add-log", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    mode: "cors",
-                    body: JSON.stringify(log),
-                });
-                const data = await res.json();
-                console.log(data);
-            }
-            fetchData();
-        } else {
+        console.log(projectTitle, log);
+
+        if (log === undefined && projectTitle === undefined) {
             setLogError(true);
+            setProjectTitleError(true);
+            return;
+        }
+        setLogError(false);
+        setProjectTitleError(false);
+        let sendData = {
+            log,
+            projectTitle,
+        };
+        fetchData(sendData);
+    }
+
+    async function fetchData(sendData) {
+        const res = await fetch("http://localhost:4000/add-log", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization:
+                    "Bearer " +
+                    localStorage.getItem("tocken") +
+                    " " +
+                    localStorage.getItem("userId"),
+            },
+            mode: "cors",
+            body: JSON.stringify(sendData),
+        });
+        const { message } = await res.json();
+        if (message === "successfully added log") {
+            setLog(" ");
+            setProjectTitle(" ");
+            setLogStatus(true);
         }
     }
+    const projectListItems = ["R & D", "Project 1", "Project 2", "Project 3"];
 
     return (
         <div className="row">
@@ -42,11 +70,32 @@ function AddLog() {
                         action="/add-log"
                         encType="application/json"
                     >
+                        <div className="form-group p-2 d-flex flex-column justify-content-between align-items-center">
+                            <select
+                                value={projectTitle}
+                                id="projectListItems"
+                                className="p-2"
+                                onChange={dropDownChangeHandler}
+                            >
+                                <option>Select Project</option>
+                                {projectListItems.map((el, i) => {
+                                    return (
+                                        <option key={i} value={el}>
+                                            {el}
+                                        </option>
+                                    );
+                                })}
+                            </select>
+                            {projectTitleError && (
+                                <span>Please select project title</span>
+                            )}
+                        </div>
                         <div className="form-group p-2">
                             <label htmlFor="logDescription">
                                 Log Description
                             </label>
                             <textarea
+                                value={log}
                                 type="text"
                                 className="form-control"
                                 id="logDescription"
@@ -56,7 +105,9 @@ function AddLog() {
                                 onChange={logChangeHandler}
                             />
                             {logError && <span>Please enter log</span>}
+                            {logStatus && <span>Log added successfully</span>}
                         </div>
+
                         <div className="form-group p-2 d-flex justify-content-center">
                             <Button
                                 onClick={submitLogHandler}

@@ -9,7 +9,9 @@ function Dashboard(props) {
         <>
             <div className="row">
                 <Navbar></Navbar>
-                <div className="col-9 dashboardContent"></div>
+                <div className="col-9 dashboardContent">
+                    <h3>Hello user!</h3>
+                </div>
             </div>
         </>
     );
