@@ -78,6 +78,10 @@ function Navbar() {
         }
     }
 
+    async function getDashboard(){
+        const res = await fetch("http://localhost:4000"){}
+    }
+
     return (
         <>
             <div className="col-2 d-flex justify-content-start align-items-start flex-column sidebar">
