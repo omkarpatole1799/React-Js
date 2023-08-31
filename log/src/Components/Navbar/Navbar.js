@@ -4,21 +4,24 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 function Navbar() {
     const navigate = useNavigate();
-
+    let AuthHeader = {
+        Authorization:
+            "Bearer " +
+            localStorage.getItem("tocken") +
+            "  " +
+            localStorage.getItem("userId"),
+    };
     const [actionButtons, setActionButtons] = useState([
-        { name: "Add Log", function: addLogHandler },
-        { name: "Dashboard", function: daboardButtonHandler },
-        { name: "Attendance", function: attendanceButtonHandler },
-        { name: "Logout", function: logOutButtonHandler },
         { name: "Login", function: loginButtonHandler },
     ]);
+
+    const [alert, setAlert] = useState(false);
 
     useEffect(() => {
         if (localStorage.getItem("tocken")) {
             setActionButtons([
                 { name: "Add Log", function: addLogHandler },
                 { name: "Dashboard", function: daboardButtonHandler },
-                { name: "Attendance", function: attendanceButtonHandler },
                 { name: "Logout", function: logOutButtonHandler },
             ]);
         }
@@ -28,60 +31,34 @@ function Navbar() {
         getLogin();
     }
     function logOutButtonHandler() {
-        localStorage.removeItem("tocken");
-        localStorage.removeItem("userId");
+        clearLocalStorage();
         navigate("/login");
     }
     function addLogHandler() {
-        getAddLog();
+        navigate("/add-log");
     }
     function daboardButtonHandler() {
         navigate("/dashboard");
     }
-    function attendanceButtonHandler() {
-        navigate("/dashboard");
-    }
-
-    async function getAddLog() {
-        const res = await fetch("http://localhost:4000/add-log", {
-            headers: {
-                Authorization:
-                    "Bearer " +
-                    localStorage.getItem("tocken") +
-                    " " +
-                    localStorage.getItem("userId"),
-            },
-        });
-        const { call } = await res.json();
-        if (call === "authorized") {
-            localStorage.clear("tocken");
-            navigate("/add-log");
-        }
-        if (call === "not authorized") {
-            navigate("/login");
-        }
+    function clearLocalStorage() {
+        localStorage.removeItem("userId");
+        localStorage.removeItem("tocken");
     }
 
     async function getLogin() {
         const res = await fetch("http://localhost:4000/login", {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("tocken"),
-            },
+            headers: AuthHeader,
         });
         const { call } = await res.json();
-        if (call === "not authorized") {
-            localStorage.clear("tocken");
-            navigate("/login");
-        }
-        if (call === "authorized") {
+        console.log(call);
+        if (call === 1) {
             navigate("/dashboard");
         }
+        if (call === 0) {
+            clearLocalStorage();
+            navigate("/login");
+        }
     }
-
-    async function getDashboard(){
-        const res = await fetch("http://localhost:4000"){}
-    }
-
     return (
         <>
             <div className="col-2 d-flex justify-content-start align-items-start flex-column sidebar">
@@ -97,6 +74,12 @@ function Navbar() {
                     );
                 })}
             </div>
+
+            {alert && (
+                <div className="alert alert-warning" role="alert">
+                    <p>You'r not authorized please login</p>
+                </div>
+            )}
         </>
     );
 }

@@ -30,7 +30,11 @@ function Login() {
             mode: "cors",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: "Bearer " + localStorage.getItem("tocken"),
+                Authorization:
+                    "Bearer " +
+                    localStorage.getItem("tocken") +
+                    " " +
+                    localStorage.getItem("userId"),
             },
             body: JSON.stringify({
                 user_email: email,
