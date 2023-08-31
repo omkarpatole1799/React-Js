@@ -55,6 +55,9 @@ function AddLog() {
             setLog(" ");
             setProjectTitle(" ");
             setLogStatus(true);
+            setTimeout(() => {
+                setLogStatus(false);
+            }, 1500);
         }
     }
     const projectListItems = ["R & D", "Project 1", "Project 2", "Project 3"];
@@ -101,7 +104,6 @@ function AddLog() {
                             onChange={logChangeHandler}
                         />
                         {logError && <span>Please enter log</span>}
-                        {logStatus && <span>Log added successfully</span>}
                     </div>
 
                     <div className="form-group p-2 d-flex justify-content-center">
@@ -113,6 +115,11 @@ function AddLog() {
                             Submit
                         </Button>
                     </div>
+                    {logStatus && (
+                        <div className="alert alert-warning" role="alert">
+                            Log Added Successfully
+                        </div>
+                    )}
                 </form>
             </div>
         </div>
