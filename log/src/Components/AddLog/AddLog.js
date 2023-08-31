@@ -60,65 +60,60 @@ function AddLog() {
     const projectListItems = ["R & D", "Project 1", "Project 2", "Project 3"];
 
     return (
-        <div className="row">
-            <Navbar></Navbar>
-            <div className="col-9 container">
-                <h3 className="text-center mt-5">Add Log</h3>
-                <div className="d-flex justify-content-center align-items-center">
-                    <form
-                        method="POST"
-                        action="/add-log"
-                        encType="application/json"
-                    >
-                        <div className="form-group p-2 d-flex flex-column justify-content-between align-items-center">
-                            <select
-                                value={projectTitle}
-                                id="projectListItems"
-                                className="p-2"
-                                onChange={dropDownChangeHandler}
-                            >
-                                <option>Select Project</option>
-                                {projectListItems.map((el, i) => {
-                                    return (
-                                        <option key={i} value={el}>
-                                            {el}
-                                        </option>
-                                    );
-                                })}
-                            </select>
-                            {projectTitleError && (
-                                <span>Please select project title</span>
-                            )}
-                        </div>
-                        <div className="form-group p-2">
-                            <label htmlFor="logDescription">
-                                Log Description
-                            </label>
-                            <textarea
-                                value={log}
-                                type="text"
-                                className="form-control"
-                                id="logDescription"
-                                name="logDescription"
-                                rows="6"
-                                cols="50"
-                                onChange={logChangeHandler}
-                            />
-                            {logError && <span>Please enter log</span>}
-                            {logStatus && <span>Log added successfully</span>}
-                        </div>
+        <div className="">
+            <h3 className="text-center mt-5">Add Log</h3>
+            <div className="d-flex justify-content-center align-items-center">
+                <form
+                    method="POST"
+                    action="/add-log"
+                    encType="application/json"
+                >
+                    <div className="form-group p-2 d-flex flex-column justify-content-between align-items-center">
+                        <select
+                            value={projectTitle}
+                            id="projectListItems"
+                            className="p-2"
+                            onChange={dropDownChangeHandler}
+                        >
+                            <option>Select Project</option>
+                            {projectListItems.map((el, i) => {
+                                return (
+                                    <option key={i} value={el}>
+                                        {el}
+                                    </option>
+                                );
+                            })}
+                        </select>
+                        {projectTitleError && (
+                            <span>Please select project title</span>
+                        )}
+                    </div>
+                    <div className="form-group p-2">
+                        <label htmlFor="logDescription">Log Description</label>
+                        <textarea
+                            value={log}
+                            type="text"
+                            className="form-control"
+                            id="logDescription"
+                            name="logDescription"
+                            rows="6"
+                            cols="50"
+                            onChange={logChangeHandler}
+                        />
+                        {logError && <span>Please enter log</span>}
+                        {logStatus && <span>Log added successfully</span>}
+                    </div>
 
-                        <div className="form-group p-2 d-flex justify-content-center">
-                            <Button
-                                onClick={submitLogHandler}
-                                type="submit"
-                                className="btn btn-primary"
-                            >
-                                Submit
-                            </Button>
-                        </div>
-                    </form>
-                </div>
+                    <div className="form-group p-2 d-flex justify-content-center">
+                        <Button
+                            onClick={submitLogHandler}
+                            type="submit"
+                            className="btn btn-primary"
+                        >
+                            Submit
+                        </Button>
+                    </div>
+                </form>
             </div>
         </div>
     );
