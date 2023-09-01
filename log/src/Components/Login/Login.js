@@ -48,7 +48,7 @@ function Login() {
             setPassWrong(false);
             localStorage.setItem("tocken", tocken);
             localStorage.setItem("userId", userId);
-            navigate("/dashboard");
+            navigate("/dashboard", { state: { userId } });
         }
         if (message === "Incorret Password") {
             setPassWrong(true);

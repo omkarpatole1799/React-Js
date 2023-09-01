@@ -7,6 +7,7 @@ import Dashboard from "./Components/Dashboard/Dashboard";
 import AddUser from "./Components/SignUp/AddUser";
 import AddLog from "./Components/AddLog/AddLog";
 import RootComponent from "./Components/Root/RootComponent";
+import LogList from "./Components/LogList/LogList";
 
 const router = createBrowserRouter([
     {
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
             { path: "add-log", element: <AddLog /> },
             { path: "dashboard", element: <Dashboard /> },
             { path: "add-user", element: <AddUser /> },
+            { path: "log-list", element: <LogList /> },
         ],
     },
 ]);

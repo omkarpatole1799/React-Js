@@ -15,6 +15,7 @@ function Navbar() {
         { name: "Dashboard", function: daboardButtonHandler },
         { name: "Logout", function: logOutButtonHandler },
         { name: "Login", function: loginButtonHandler },
+        { name: "Log List", function: logListButtonHandler },
     ];
 
     function loginButtonHandler() {
@@ -28,7 +29,11 @@ function Navbar() {
         navigate("/add-log");
     }
     function daboardButtonHandler() {
-        navigate("/dashboard");
+        let userId = localStorage.getItem("userId");
+        navigate("/dashboard", { state: { userId } });
+    }
+    function logListButtonHandler() {
+        navigate("/log-list");
     }
     function clearLocalStorage() {
         localStorage.removeItem("userId");
