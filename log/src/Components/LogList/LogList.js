@@ -3,15 +3,18 @@ import "./LogList.css";
 
 function LogList() {
     function getLogList() {
-        fetch("http://localhost:4000/log-list", {
-            headers: {
-                Authorization:
-                    "Bearer " +
-                    localStorage.getItem("tocken") +
-                    " " +
-                    localStorage.getItem("userId"),
-            },
-        }).then((res) => {
+        fetch(
+            "http://localhost:4000/log-list/" + localStorage.getItem("userId"),
+            {
+                headers: {
+                    Authorization:
+                        "Bearer " +
+                        localStorage.getItem("tocken") +
+                        " " +
+                        localStorage.getItem("userId"),
+                },
+            }
+        ).then((res) => {
             console.log(res);
         });
     }
@@ -19,33 +22,29 @@ function LogList() {
 
     return (
         <div>
-            <table className="table">
+            <table>
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th>SR No</th>
+                        <th>Log Description</th>
+                        <th>Log Date</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td>1</td>
+                        <td>Test log 1</td>
+                        <td>2-3-23</td>
                     </tr>
                     <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
+                        <td>1</td>
+                        <td>Test log 1</td>
+                        <td>2-3-23</td>
                     </tr>
                     <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
+                        <td>1</td>
+                        <td>Test log 1</td>
+                        <td>2-3-23</td>
                     </tr>
                 </tbody>
             </table>
