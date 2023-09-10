@@ -9,7 +9,6 @@ function Navbar() {
             '  ' +
             localStorage.getItem('userId'),
     };
-
     const actionButtons = [
         { name: 'Add Log', function: addLogHandler },
         { name: 'Dashboard', function: daboardButtonHandler },
