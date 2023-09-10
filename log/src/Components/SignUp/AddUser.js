@@ -1,23 +1,26 @@
 // functions import
-import { useState } from "react";
+import { useState } from 'react';
 // import useInput from "../Hooks/use-input";
 
 // components import
-import Button from "../UI/Button/Button";
+import Button from '../UI/Button/Button';
 
 function AddUser() {
     const [emailAlreadyExsist, setEmailAlreadyExsist] = useState(false);
 
-    const [user_name, setuser_name] = useState("");
-    const [email, setEmail] = useState("");
-    const [pass, setPass] = useState("");
+    const [user_name, setuser_name] = useState('');
+    const [email, setEmail] = useState('');
+    const [pass, setPass] = useState('');
 
     const [createSuccess, setCreateSuccess] = useState(false);
 
+    const [adminCheckbox, setAdminCheckbox] = useState(false);
+    const [userCheckbox, setUserCheckbox] = useState(false);
+    const [userType, setUserType] = useState(null);
     function resetInputs() {
-        setuser_name("");
-        setEmail("");
-        setPass("");
+        setuser_name('');
+        setEmail('');
+        setPass('');
     }
 
     function user_nameChangeHandler(e) {
@@ -29,33 +32,43 @@ function AddUser() {
     function passwordChangeHandler(e) {
         setPass(e.target.value);
     }
-
+    function adminCheckboxHandler(e) {
+        setUserType(1);
+        setUserCheckbox(false);
+        setAdminCheckbox(true);
+    }
+    function userCheckboxHandler(e) {
+        setUserType(2);
+        setAdminCheckbox(false);
+        setUserCheckbox(true);
+    }
     function submitFormHandler(e) {
         e.preventDefault();
 
-        if (email !== "" && pass !== "") {
+        if (email !== '' && pass !== '') {
             postSignUp();
         }
     }
     const postSignUp = async () => {
         setEmailAlreadyExsist(false);
-        const res = await fetch("http://localhost:4000/add-user", {
-            method: "POST",
-            mode: "cors",
+        const res = await fetch('http://localhost:4000/add-user', {
+            method: 'POST',
+            mode: 'cors',
             headers: {
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 user_name,
                 user_email: email,
                 pass,
+                user_type: userType,
             }),
         });
         const { message } = await res.json();
-        if (message === "Email already exsist") {
+        if (message === 'Email already exsist') {
             setEmailAlreadyExsist(true);
         }
-        if (message === "User Created successfully") {
+        if (message === 'User Created successfully') {
             resetInputs();
             setCreateSuccess(true);
             setTimeout(() => {
@@ -106,6 +119,28 @@ function AddUser() {
                             name="password"
                             onChange={passwordChangeHandler}
                         />
+                    </div>
+                    <div className="d-flex justify-content-center align-items-center">
+                        <div className="form-group p-2 d-flex justify-content-center align-items-center">
+                            <label className="mx-2">Admin</label>
+                            <input
+                                type="checkbox"
+                                id="adminCheckbox"
+                                value={adminCheckbox}
+                                checked={adminCheckbox}
+                                onChange={adminCheckboxHandler}
+                            />
+                        </div>
+                        <div className="form-group p-2 d-flex justify-content-center">
+                            <label className="mx-2">User</label>
+                            <input
+                                type="checkbox"
+                                id="userCheckbox"
+                                value={userCheckbox}
+                                checked={userCheckbox}
+                                onChange={userCheckboxHandler}
+                            />
+                        </div>
                     </div>
                     <div className="form-group p-2 d-flex justify-content-center">
                         <Button

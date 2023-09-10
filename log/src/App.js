@@ -1,24 +1,24 @@
 // function imports
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 // component imports
-import Login from "./Components/Login/Login";
-import Dashboard from "./Components/Dashboard/Dashboard";
-import AddUser from "./Components/SignUp/AddUser";
-import AddLog from "./Components/AddLog/AddLog";
-import RootComponent from "./Components/Root/RootComponent";
-import LogList from "./Components/LogList/LogList";
+import Login from './Components/Login/Login';
+import Dashboard from './Components/Dashboard/Dashboard';
+import AddUser from './Components/SignUp/AddUser';
+import AddLog from './Components/AddLog/AddLog';
+import RootComponent from './Components/Root/RootComponent';
+import LogList from './Components/LogList/LogList';
 
 const router = createBrowserRouter([
     {
-        path: "/",
+        path: '/',
         element: <RootComponent />,
         children: [
-            { path: "login", element: <Login /> },
-            { path: "add-log", element: <AddLog /> },
-            { path: "dashboard", element: <Dashboard /> },
-            { path: "add-user", element: <AddUser /> },
-            { path: "log-list", element: <LogList /> },
+            { path: 'login', element: <Login /> },
+            { path: 'add-log', element: <AddLog /> },
+            { path: 'dashboard', element: <Dashboard /> },
+            { path: 'add-user', element: <AddUser /> },
+            { path: 'log-list', element: <LogList /> },
         ],
     },
 ]);

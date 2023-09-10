@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
     const navigate = useNavigate();
 
-    const [email, setEmail] = useState("");
-    const [pass, setPass] = useState("");
+    const [email, setEmail] = useState('');
+    const [pass, setPass] = useState('');
 
     const [emailWrong, setEmailWrong] = useState(false);
     const [passWrong, setPassWrong] = useState(false);
@@ -18,42 +18,45 @@ function Login() {
     }
     function loginButtonHandler(e) {
         e.preventDefault();
-        if (email !== "" && pass !== "") {
+        if (email !== '' && pass !== '') {
             loginRequestHandler();
         }
     }
     const loginRequestHandler = async () => {
-        const res = await fetch("http://localhost:4000/login", {
-            method: "POST",
-            mode: "cors",
+        const res = await fetch('http://localhost:4000/login', {
+            method: 'POST',
+            mode: 'cors',
             headers: {
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
                 Authorization:
-                    "Bearer " +
-                    localStorage.getItem("tocken") +
-                    " " +
-                    localStorage.getItem("userId"),
+                    'Bearer ' +
+                    localStorage.getItem('tocken') +
+                    ' ' +
+                    localStorage.getItem('userId'),
             },
             body: JSON.stringify({
                 user_email: email,
                 pass,
             }),
         });
-        const { message, tocken, userId } = await res.json();
-        if (message === "Not authorized") {
-            console.log("Not authorized");
+        const { message, tocken, userId, user_name, user_type } =
+            await res.json();
+        if (message === 'Not authorized') {
+            console.log('Not authorized');
         }
-        if (message === "authenticated") {
+        if (message === 'authenticated') {
             setEmailWrong(false);
             setPassWrong(false);
-            localStorage.setItem("tocken", tocken);
-            localStorage.setItem("userId", userId);
-            navigate("/dashboard", { state: { userId } });
+            localStorage.setItem('tocken', tocken);
+            localStorage.setItem('userId', userId);
+            navigate('/dashboard');
+            localStorage.setItem('user_name', user_name);
+            localStorage.setItem('user_type', user_type);
         }
-        if (message === "Incorret Password") {
+        if (message === 'Incorret Password') {
             setPassWrong(true);
         }
-        if (message === "Incorrect Email") {
+        if (message === 'Incorrect Email') {
             setEmailWrong(true);
         }
     };

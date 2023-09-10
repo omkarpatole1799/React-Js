@@ -1,21 +1,22 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
     const navigate = useNavigate();
     let AuthHeader = {
         Authorization:
-            "Bearer " +
-            localStorage.getItem("tocken") +
-            "  " +
-            localStorage.getItem("userId"),
+            'Bearer ' +
+            localStorage.getItem('tocken') +
+            '  ' +
+            localStorage.getItem('userId'),
     };
 
     const actionButtons = [
-        { name: "Add Log", function: addLogHandler },
-        { name: "Dashboard", function: daboardButtonHandler },
-        { name: "Logout", function: logOutButtonHandler },
-        { name: "Login", function: loginButtonHandler },
-        { name: "Log List", function: logListButtonHandler },
+        { name: 'Add Log', function: addLogHandler },
+        { name: 'Dashboard', function: daboardButtonHandler },
+        { name: 'Logout', function: logOutButtonHandler },
+        { name: 'Login', function: loginButtonHandler },
+        { name: 'Add-user', function: addUserButtonHandler },
+        { name: 'Log List', function: logListButtonHandler },
     ];
 
     function loginButtonHandler() {
@@ -23,35 +24,37 @@ function Navbar() {
     }
     function logOutButtonHandler() {
         clearLocalStorage();
-        navigate("/login");
+        navigate('/login');
     }
     function addLogHandler() {
-        navigate("/add-log");
+        navigate('/add-log');
     }
     function daboardButtonHandler() {
-        let userId = localStorage.getItem("userId");
-        navigate("/dashboard", { state: { userId } });
+        let userId = localStorage.getItem('userId');
+        navigate('/dashboard', { state: { userId } });
     }
     function logListButtonHandler() {
-        navigate("/log-list");
+        navigate('/log-list');
     }
     function clearLocalStorage() {
-        localStorage.removeItem("userId");
-        localStorage.removeItem("tocken");
+        localStorage.removeItem('userId');
+        localStorage.removeItem('tocken');
+        localStorage.removeItem('user_name');
+        localStorage.removeItem('user_type');
     }
 
     async function getLogin() {
-        const res = await fetch("http://localhost:4000/login", {
+        const res = await fetch('http://localhost:4000/login', {
             headers: AuthHeader,
         });
         const { call } = await res.json();
         console.log(call);
         if (call === 1) {
-            navigate("/dashboard");
+            navigate('/dashboard');
         }
         if (call === 0) {
             clearLocalStorage();
-            navigate("/login");
+            navigate('/login');
         }
     }
     return (
