@@ -5,9 +5,9 @@ function Login() {
     const navigate = useNavigate();
 
     const [email, setEmail] = useState('');
-    const [pass, setPass] = useState('');
-
     const [emailWrong, setEmailWrong] = useState(false);
+
+    const [pass, setPass] = useState('');
     const [passWrong, setPassWrong] = useState(false);
 
     function emailChangeHandler(e) {
@@ -20,6 +20,8 @@ function Login() {
         e.preventDefault();
         if (email !== '' && pass !== '') {
             loginRequestHandler();
+        } else {
+
         }
     }
     const loginRequestHandler = async () => {
@@ -47,9 +49,9 @@ function Login() {
         if (message === 'authenticated') {
             setEmailWrong(false);
             setPassWrong(false);
+            navigate('/dashboard');
             localStorage.setItem('tocken', tocken);
             localStorage.setItem('userId', userId);
-            navigate('/dashboard');
             localStorage.setItem('user_name', user_name);
             localStorage.setItem('user_type', user_type);
         }

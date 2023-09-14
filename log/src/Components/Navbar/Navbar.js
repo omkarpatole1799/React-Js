@@ -1,22 +1,18 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthHeader } from '../../Utils/authHeaders';
 
 function Navbar() {
     const navigate = useNavigate();
-    let AuthHeader = {
-        Authorization:
-            'Bearer ' +
-            localStorage.getItem('tocken') +
-            '  ' +
-            localStorage.getItem('userId'),
-    };
-    const actionButtons = [
+
+    const [actionButtons, setActionButtons] = useState([
         { name: 'Add Log', function: addLogHandler },
         { name: 'Dashboard', function: daboardButtonHandler },
         { name: 'Logout', function: logOutButtonHandler },
         { name: 'Login', function: loginButtonHandler },
         { name: 'Add-user', function: addUserButtonHandler },
         { name: 'Log List', function: logListButtonHandler },
-    ];
+    ]);
 
     function loginButtonHandler() {
         getLogin();
@@ -34,6 +30,9 @@ function Navbar() {
     }
     function logListButtonHandler() {
         navigate('/log-list');
+    }
+    function addUserButtonHandler() {
+        navigate('/add-user');
     }
     function clearLocalStorage() {
         localStorage.removeItem('userId');
