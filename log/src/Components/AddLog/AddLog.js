@@ -37,7 +37,7 @@ function AddLog() {
     }
 
     async function fetchData(sendData) {
-        const res = await fetch("http://localhost:4000/add-log", {
+        const res = await fetch("http://localhost:4000/user/addLog", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -68,7 +68,7 @@ function AddLog() {
             <div className="d-flex justify-content-center align-items-center">
                 <form
                     method="POST"
-                    action="/add-log"
+                    action="/addLog"
                     encType="application/json"
                 >
                     <div className="form-group p-2 d-flex flex-column justify-content-between align-items-center">

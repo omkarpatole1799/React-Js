@@ -10,20 +10,25 @@ import LogList from './Components/LogList/LogList';
 import RootComponent from './Components/Root/RootComponent';
 
 const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <RootComponent />,
-        children: [
-            { path: 'login', element: <Login /> },
-            { path: 'add-log', element: <AddLog /> },
-            { path: 'dashboard', element: <Dashboard /> },
-            { path: 'add-user', element: <AddUser /> },
-            { path: 'log-list', element: <LogList /> },
-        ],
-    },
+  {
+    path: '/',
+    element: <RootComponent />,
+    children: [
+      { path: 'addLog', element: <AddLog /> },
+      { path: 'dashboard', element: <Dashboard /> },
+      { path: 'addUser', element: <AddUser /> },
+      { path: 'logList', element: <LogList /> },
+    ],
+  },
+  { path: '/login', element: <Login /> },
 ]);
 
 function App() {
-    return <RouterProvider router={router}></RouterProvider>;
+  
+  return (
+    <>
+      <RouterProvider router={router}></RouterProvider>
+    </>
+  );
 }
 export default App;
