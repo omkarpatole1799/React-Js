@@ -51,10 +51,11 @@ function Login() {
       setPassWrong(false);
       console.log(userName);
       dispatch(authActions.loadedUser(userName));
+      navigate('/dashboard');
       localStorage.setItem('tocken', tocken);
       localStorage.setItem('userId', userId);
-      localStorage.setItem('user_name', userName);
-      localStorage.setItem('user_type', userType);
+      localStorage.setItem('userName', userName);
+      localStorage.setItem('userType', userType);
     }
     if (message === 'Incorret Password') {
       setPassWrong(true);

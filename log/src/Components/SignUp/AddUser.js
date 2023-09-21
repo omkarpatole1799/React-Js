@@ -51,7 +51,7 @@ function AddUser() {
   }
   const postSignUp = async () => {
     setEmailAlreadyExsist(false);
-    const res = await fetch('http://localhost:4000/addUser', {
+    const res = await fetch('http://localhost:4000/admin/addUser', {
       method: 'POST',
       mode: 'cors',
       headers: {

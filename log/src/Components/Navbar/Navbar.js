@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom';
 function Navbar() {
   const navigate = useNavigate();
 
-  const [actionButtons, setActionButtons] = useState([
+  const actionButtons = [
     { name: 'Dashboard', function: daboardButtonHandler },
     { name: 'Add log', function: addLogHandler },
     { name: 'Add user', function: addUserButtonHandler },
     { name: 'Log list', function: logListButtonHandler },
     { name: 'Logout', function: logOutButtonHandler },
-  ]);
+  ];
 
   function logOutButtonHandler() {
     clearLocalStorage();
@@ -20,8 +20,7 @@ function Navbar() {
     navigate('/addLog');
   }
   function daboardButtonHandler() {
-    let userId = localStorage.getItem('userId');
-    navigate('/dashboard', { state: { userId } });
+    navigate('/dashboard');
   }
   function logListButtonHandler() {
     navigate('/logList');

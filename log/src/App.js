@@ -1,5 +1,6 @@
 // function imports
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 // component imports
 import AddUser from './Components/SignUp/AddUser';
@@ -24,7 +25,9 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  
+  const user = useSelector((state) => state.user);
+  console.log(user);
+  console.log(useSelector((state) => state.isAuthenticated));
   return (
     <>
       <RouterProvider router={router}></RouterProvider>

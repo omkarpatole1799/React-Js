@@ -1,9 +1,9 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit';
 
 const initialState = {
+  user: localStorage.getItem('user_name'),
   tocken: localStorage.getItem('tocken'),
   isAuthenticated: false,
-  user: null,
   userType: null,
 };
 
@@ -19,7 +19,7 @@ const authSlice = createSlice({
 });
 
 const store = configureStore({
-  reducer: { authReducer: authSlice.reducer },
+  reducer: authSlice.reducer,
 });
 
 export const authActions = authSlice.actions;
