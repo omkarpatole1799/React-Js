@@ -1,6 +1,5 @@
-import { useState } from "react";
-import Button from "../UI/Button/Button";
-import Navbar from "../Navbar/Navbar";
+import { useState } from 'react';
+import Button from '../UI/Button/Button';
 
 function AddLog() {
     const [log, setLog] = useState();
@@ -37,40 +36,36 @@ function AddLog() {
     }
 
     async function fetchData(sendData) {
-        const res = await fetch("http://localhost:4000/user/addLog", {
-            method: "POST",
+        const res = await fetch('http://localhost:4000/user/addLog', {
+            method: 'POST',
             headers: {
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
                 Authorization:
-                    "Bearer " +
-                    localStorage.getItem("tocken") +
-                    " " +
-                    localStorage.getItem("userId"),
+                    'Bearer ' +
+                    localStorage.getItem('tocken') +
+                    ' ' +
+                    localStorage.getItem('userId'),
             },
-            mode: "cors",
+            mode: 'cors',
             body: JSON.stringify(sendData),
         });
         const { message } = await res.json();
-        if (message === "successfully added log") {
-            setLog(" ");
-            setProjectTitle(" ");
+        if (message === 'successfully added log') {
+            setLog(' ');
+            setProjectTitle(' ');
             setLogStatus(true);
             setTimeout(() => {
                 setLogStatus(false);
             }, 1500);
         }
     }
-    const projectListItems = ["R & D", "Project 1", "Project 2", "Project 3"];
+    const projectListItems = ['R & D', 'Project 1', 'Project 2', 'Project 3'];
 
     return (
         <div className="">
             <h3 className="text-center mt-5">Add Log</h3>
             <div className="d-flex justify-content-center align-items-center">
-                <form
-                    method="POST"
-                    action="/addLog"
-                    encType="application/json"
-                >
+                <form method="POST" action="/addLog" encType="application/json">
                     <div className="form-group p-2 d-flex flex-column justify-content-between align-items-center">
                         <select
                             value={projectTitle}

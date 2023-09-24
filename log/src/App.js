@@ -1,7 +1,5 @@
 // function imports
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // component imports
 import AddUser from './Components/SignUp/AddUser';
 import AddLog from './Components/AddLog/AddLog';
@@ -9,29 +7,25 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import Login from './Components/Login/Login';
 import LogList from './Components/LogList/LogList';
 import RootComponent from './Components/Root/RootComponent';
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <RootComponent />,
-    children: [
-      { path: 'addLog', element: <AddLog /> },
-      { path: 'dashboard', element: <Dashboard /> },
-      { path: 'addUser', element: <AddUser /> },
-      { path: 'logList', element: <LogList /> },
-    ],
-  },
-  { path: '/login', element: <Login /> },
-]);
+import PrivateRoutes from './Components/Routes/PrivateRoutes';
 
 function App() {
-  const user = useSelector((state) => state.user);
-  console.log(user);
-  console.log(useSelector((state) => state.isAuthenticated));
-  return (
-    <>
-      <RouterProvider router={router}></RouterProvider>
-    </>
-  );
+    return (
+        <>
+            <BrowserRouter>
+                <Routes>
+                    <Route element={<RootComponent />}>
+                        <Route element={<PrivateRoutes />}>
+                            <Route path="/AddUser" element={<AddUser />} />
+                            <Route path="/AddLog" element={<AddLog />} />
+                            <Route path="/Dashboard" element={<Dashboard />} />
+                            <Route path="/LogList" element={<LogList />} />
+                        </Route>
+                    </Route>
+                    <Route path="/login" element={<Login />} />
+                </Routes>
+            </BrowserRouter>
+        </>
+    );
 }
 export default App;
