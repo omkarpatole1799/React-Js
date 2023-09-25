@@ -1,31 +1,38 @@
 // function imports
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 // component imports
-import AddUser from './Components/SignUp/AddUser';
-import AddLog from './Components/AddLog/AddLog';
-import Dashboard from './Components/Dashboard/Dashboard';
-import Login from './Components/Login/Login';
-import LogList from './Components/LogList/LogList';
-import RootComponent from './Components/Root/RootComponent';
-import PrivateRoutes from './Components/Routes/PrivateRoutes';
+import AddUser from './Components/SignUp/AddUser'
+import AddLog from './Components/AddLog/AddLog'
+import Dashboard from './Components/Dashboard/Dashboard'
+import Login from './Components/Login/Login'
+import LogList from './Components/LogList/LogList'
+import RootComponent from './Components/Root/RootComponent'
+
+import privateRouteLoader from './Utils/privateRouteLoader'
+
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <RootComponent />,
+        loader: privateRouteLoader,
+        children: [
+            { path: '/', element: <Dashboard /> },
+            { path: '/AddUser', element: <AddUser /> },
+            { path: '/AddLog', element: <AddLog /> },
+            { path: '/LogList/:id', element: <LogList /> },
+        ],
+    },
+    {
+        path: '/login',
+        element: <Login />,
+    },
+])
 
 function App() {
     return (
         <>
-            <BrowserRouter>
-                <Routes>
-                    <Route element={<RootComponent />}>
-                        <Route element={<PrivateRoutes />}>
-                            <Route path="/AddUser" element={<AddUser />} />
-                            <Route path="/AddLog" element={<AddLog />} />
-                            <Route path="/Dashboard" element={<Dashboard />} />
-                            <Route path="/LogList" element={<LogList />} />
-                        </Route>
-                    </Route>
-                    <Route path="/login" element={<Login />} />
-                </Routes>
-            </BrowserRouter>
+            <RouterProvider router={router} />
         </>
-    );
+    )
 }
-export default App;
+export default App

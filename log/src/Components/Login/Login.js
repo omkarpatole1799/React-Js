@@ -1,27 +1,24 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { authActions } from '../../Store/index';
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const [email, setEmail] = useState('');
-    const [emailWrong, setEmailWrong] = useState(false);
+    const navigate = useNavigate()
+    const [email, setEmail] = useState('')
+    const [emailWrong, setEmailWrong] = useState(false)
 
-    const [pass, setPass] = useState('');
-    const [passWrong, setPassWrong] = useState(false);
+    const [pass, setPass] = useState('')
+    const [passWrong, setPassWrong] = useState(false)
 
     function emailChangeHandler(e) {
-        setEmail(e.target.value);
+        setEmail(e.target.value)
     }
     function passwordChangeHandler(e) {
-        setPass(e.target.value);
+        setPass(e.target.value)
     }
     function loginButtonHandler(e) {
-        e.preventDefault();
+        e.preventDefault()
         if (email !== '' && pass !== '') {
-            loginRequestHandler();
+            loginRequestHandler()
         }
     }
     const loginRequestHandler = async () => {
@@ -35,35 +32,34 @@ function Login() {
                 userEmail: email,
                 pass,
             }),
-        });
-        const { message, tocken, userId, userName, userType } =
-            await res.json();
+        })
+        const { message, tocken, userId, userName, userType } = await res.json()
 
         if (message === 'Not authorized') {
-            console.log('Not authorized');
+            console.log('Not authorized')
         }
 
         if (message === 'authenticated') {
-            setEmailWrong(false);
-            setPassWrong(false);
-            localStorage.setItem('tocken', tocken);
-            let expiration = new Date();
-            expiration.setHours(expiration.getHours() + 10);
-            localStorage.setItem('tockenExpiry', expiration.toISOString());
-            localStorage.setItem('userId', userId);
-            localStorage.setItem('userName', userName);
-            localStorage.setItem('userType', userType);
-            navigate('/dashboard');
+            setEmailWrong(false)
+            setPassWrong(false)
+            localStorage.setItem('tocken', tocken)
+            let expiration = new Date()
+            expiration.setHours(expiration.getHours() + 10)
+            localStorage.setItem('tockenExpiry', expiration.toISOString())
+            localStorage.setItem('userId', userId)
+            localStorage.setItem('userName', userName)
+            localStorage.setItem('userType', userType)
+            navigate('/')
         }
 
         if (message === 'Incorret Password') {
-            setPassWrong(true);
+            setPassWrong(true)
         }
 
         if (message === 'Incorrect Email') {
-            setEmailWrong(true);
+            setEmailWrong(true)
         }
-    };
+    }
     return (
         <div className="container">
             <h3 className="mt-3 mb-3">Login</h3>
@@ -98,14 +94,13 @@ function Login() {
                     <button
                         type="submit"
                         className="btn btn-success d-flex justify-content-center"
-                        onClick={loginButtonHandler}
-                    >
+                        onClick={loginButtonHandler}>
                         Submit
                     </button>
                 </div>
             </form>
         </div>
-    );
+    )
 }
 
-export default Login;
+export default Login
