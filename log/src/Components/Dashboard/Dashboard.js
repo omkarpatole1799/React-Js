@@ -1,31 +1,29 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
-import './dashboard.css';
+import './dashboard.css'
 
 function Dashboard() {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     const addUserButtonHandler = () => {
-        navigate('/addUser');
-    };
+        navigate('/addUser')
+    }
     return (
         <>
             <div className="">
                 <div className="col-9 dashboardContent">
                     <h3>Hello !</h3>
-                    <span>User Type</span>
                     <div>
                         <button
                             className="button button--small"
-                            onClick={addUserButtonHandler}
-                        >
+                            onClick={addUserButtonHandler}>
                             Add User
                         </button>
                     </div>
                 </div>
             </div>
         </>
-    );
+    )
 }
 
-export default Dashboard;
+export default Dashboard
