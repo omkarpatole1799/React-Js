@@ -7,8 +7,8 @@ import Dashboard from './Components/Dashboard/Dashboard'
 import Login from './Components/Login/Login'
 import LogList from './Components/LogList/LogList'
 import RootComponent from './Components/Root/RootComponent'
-
 import privateRouteLoader from './Utils/privateRouteLoader'
+import Attendance from './Components/Attendance/Attendance'
 
 const router = createBrowserRouter([
     {
@@ -20,6 +20,7 @@ const router = createBrowserRouter([
             { path: '/AddUser', element: <AddUser /> },
             { path: '/AddLog', element: <AddLog /> },
             { path: '/LogList/:id', element: <LogList /> },
+            { path: '/addAttendance', element: <Attendance /> },
         ],
     },
     {
