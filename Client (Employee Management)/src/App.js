@@ -1,5 +1,9 @@
 // function imports
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import React from 'react'
+import {
+  createBrowserRouter,
+  RouterProvider
+} from 'react-router-dom'
 // component imports
 import AddUser from './Components/SignUp/AddUser'
 import AddLog from './Components/AddLog/AddLog'
@@ -11,29 +15,26 @@ import privateRouteLoader from './Utils/privateRouteLoader'
 import Attendance from './Components/Attendance/Attendance'
 
 const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <RootComponent />,
-        loader: privateRouteLoader,
-        children: [
-            { path: '/', element: <Dashboard /> },
-            { path: '/AddUser', element: <AddUser /> },
-            { path: '/AddLog', element: <AddLog /> },
-            { path: '/LogList/:id', element: <LogList /> },
-            { path: '/addAttendance', element: <Attendance /> },
-        ],
-    },
-    {
-        path: '/login',
-        element: <Login />,
-    },
+  {
+    path: '/',
+    element: <RootComponent />,
+    loader: privateRouteLoader,
+    children: [
+      { path: '/', element: <Dashboard /> },
+      { path: '/AddUser', element: <AddUser /> },
+      { path: '/AddLog', element: <AddLog /> },
+      { path: '/LogList/:id', element: <LogList /> },
+      { path: '/addAttendance', element: <Attendance /> }
+    ]
+  },
+  { path: '/login', element: <Login /> }
 ])
 
 function App() {
-    return (
-        <>
-            <RouterProvider router={router} />
-        </>
-    )
+  return (
+    <>
+      <RouterProvider router={router} />
+    </>
+  )
 }
 export default App
