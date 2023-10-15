@@ -1,6 +1,35 @@
 * {
-    padding: 0px;
-    margin: 0px;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+:root {
+  --main-color: ##1971c2;
+  --main-tint-1: #a5d8ff;
+
+  --grey-main: #555;
+}
+
+html {
+  font-size: 62.5%;
+
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--grey-main);
+  line-height: 1;
+  font-weight: 400;
+  font-family: 'Inter', sans-serif;
+
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+#root {
+  height: 100vh;
 }
