@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
 // CSS IMPORT
 import './Login.css'
 
@@ -25,8 +24,9 @@ function Login() {
     }
   }
   const loginRequestHandler = async () => {
+    console.log(process.env)
     const res = await fetch(
-      'http://192.168.1.5:4000/auth/login',
+      `${process.env.REACT_APP_SERVER_IP}/auth/login`,
       {
         method: 'POST',
         headers: {
@@ -84,8 +84,7 @@ function Login() {
           <form
             className="loginForm"
             method="POST"
-            encType="application/json"
-            action="/login">
+            encType="application/json">
             <div className="loginFormInputContainer">
               <label htmlFor="email" className="">
                 Email
