@@ -23,7 +23,7 @@ function Navbar() {
           { name: 'Add log', function: addLogHandler },
           {
             name: 'Add user',
-            function: addUserButtonHandler
+            function: addEmployeeButtonHandler
           },
           {
             name: 'Log list',
@@ -51,7 +51,7 @@ function Navbar() {
   }
   function addLogHandler() {
     setNavOpen(false)
-    navigate('/addLog')
+    navigate('/add-log')
   }
   function daboardButtonHandler() {
     setNavOpen(false)
@@ -59,11 +59,11 @@ function Navbar() {
   }
   function logListButtonHandler() {
     setNavOpen(false)
-    navigate('/logList/' + localStorage.getItem('userId'))
+    navigate('/log-list/' + localStorage.getItem('userId'))
   }
-  function addUserButtonHandler() {
+  function addEmployeeButtonHandler() {
     setNavOpen(false)
-    navigate('/addUser')
+    navigate('/add-employee')
   }
   function clearLocalStorage() {
     setNavOpen(false)
@@ -94,6 +94,8 @@ function Navbar() {
                 })}
             </ul>
           </nav>
+
+          {/* MOBILE NAV MENU BUTTON */}
           <button
             className="btn-mobile-nav "
             onClick={mobileNavHandler}>
