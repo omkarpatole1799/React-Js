@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import Button from '../UI/Button/Button'
 
+// CSS IMPORT
+import './add-log.css'
+
 function AddLog() {
   const [log, setLog] = useState()
   const [logError, setLogError] = useState(false)
@@ -37,6 +40,7 @@ function AddLog() {
   }
 
   async function fetchData(sendData) {
+    console.log(localStorage.getItem('userId'))
     const res = await fetch(
       'http://192.168.1.5:4000/user/addLog',
       {
@@ -63,6 +67,7 @@ function AddLog() {
       }, 1500)
     }
   }
+
   const projectListItems = [
     'R & D',
     'Project 1',
@@ -72,17 +77,17 @@ function AddLog() {
 
   return (
     <div className="">
-      <h3 className="text-center mt-5">Add Log</h3>
-      <div className="d-flex justify-content-center align-items-center">
+      <h3 className="">Add Log</h3>
+      <div className="">
         <form
           method="POST"
           action="/addLog"
           encType="application/json">
-          <div className="form-group p-2 d-flex flex-column justify-content-between align-items-center">
+          <div className="">
             <select
               value={projectTitle}
               id="projectListItems"
-              className="p-2"
+              className=""
               onChange={dropDownChangeHandler}>
               <option>Select Project</option>
               {projectListItems.map((el, i) => {
@@ -97,14 +102,14 @@ function AddLog() {
               <span>Please select project title</span>
             )}
           </div>
-          <div className="form-group p-2">
+          <div className="">
             <label htmlFor="logDescription">
               Log Description
             </label>
             <textarea
               value={log}
               type="text"
-              className="form-control"
+              className=""
               id="logDescription"
               name="logDescription"
               rows="6"
@@ -114,18 +119,16 @@ function AddLog() {
             {logError && <span>Please enter log</span>}
           </div>
 
-          <div className="form-group p-2 d-flex justify-content-center">
+          <div className="">
             <Button
               onClick={submitLogHandler}
-              type="submit"
-              className="btn btn-primary">
+              type="button"
+              className="">
               Submit
             </Button>
           </div>
           {logStatus && (
-            <div className="alert alert-warning" role="alert">
-              Log Added Successfully
-            </div>
+            <div className="">Log Added Successfully</div>
           )}
         </form>
       </div>
