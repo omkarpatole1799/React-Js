@@ -40,6 +40,14 @@ body::-webkit-scrollbar {
 }
 
 /* **************** */
+/* COMMON STYLES */
+/* **************** */
+
+input {
+  cursor: pointer;
+}
+
+/* **************** */
 /* REUSABLE STYLES */
 /* **************** */
 
