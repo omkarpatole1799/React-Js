@@ -6,11 +6,11 @@ import './dashboard.css'
 function Dashboard() {
   const navigate = useNavigate()
   const [isAdmin, setIsAdmin] = useState(false)
-  const addUserButtonHandler = () => {
-    navigate('/addUser')
+  const addEmployeeButtonHandler = () => {
+    navigate('/add-employee')
   }
   const attendanceButtonHandler = () => {
-    navigate('/addAttendance')
+    navigate('/add-attendance')
   }
   useEffect(() => {
     // prettier-ignore
@@ -20,14 +20,14 @@ function Dashboard() {
   }, [])
   return (
     <>
-      <div className="">
-        <div className="col-9 dashboardContent">
+      <div className=''>
+        <div className='col-9 dashboardContent'>
           <h3>Hello !</h3>
           <div>
             {isAdmin && (
               <button
-                className="button button--small"
-                onClick={addUserButtonHandler}>
+                className='button button--small'
+                onClick={addEmployeeButtonHandler}>
                 Add User
               </button>
             )}
