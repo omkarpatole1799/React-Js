@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom'
 
 // COMPONENTS IMPORT
-import AddUser from './Components/SignUp/AddUser'
+import AddEmployee from './Components/SignUp/AddEmployee'
 import AddLog from './Components/AddLog/AddLog'
 import Dashboard from './Components/Dashboard/Dashboard'
 import Login from './Components/Login/Login'
@@ -25,10 +25,10 @@ const router = createBrowserRouter([
     loader: privateRouteLoader,
     children: [
       { path: '/', element: <Dashboard /> },
-      { path: '/AddUser', element: <AddUser /> },
-      { path: '/AddLog', element: <AddLog /> },
-      { path: '/LogList/:id', element: <LogList /> },
-      { path: '/addAttendance', element: <Attendance /> }
+      { path: '/add-employee', element: <AddEmployee /> },
+      { path: '/add-log', element: <AddLog /> },
+      { path: '/log-list/:id', element: <LogList /> },
+      { path: '/add-attendance', element: <Attendance /> }
     ]
   },
   { path: '/login', element: <Login /> }
